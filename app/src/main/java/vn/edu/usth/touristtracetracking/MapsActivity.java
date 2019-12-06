@@ -16,7 +16,9 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
@@ -27,6 +29,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     LocationManager locationManager;
+    Marker marker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +39,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
+        // Checks for permissions, request if not granted
         if (ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
@@ -45,10 +50,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             return;
         }
+
+        // If there is a network provider (viettel, mobiphone,...) then use that for location
         if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
+                    // Get coordinates
                     double latitude = location.getLatitude();
                     double longitude = location.getLongitude();
 
@@ -56,12 +64,37 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     Geocoder geocoder = new Geocoder(getApplicationContext());
 
+
                     try {
                         List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
-                        String str = addressList.get(0).getLocality() + ",";
-                        str = str + addressList.get(0).getCountryName();
-                        mMap.addMarker(new MarkerOptions().position(latLng).title(str));
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f));
+                        String result = "";
+
+                        String cityName = addressList.get(0).getAddressLine(0);
+                        String stateName = addressList.get(0).getAddressLine(1);
+                        String countryName = addressList.get(0).getAddressLine(2);
+
+                        result = result + " " + cityName + stateName + countryName;
+
+                        // If there is already a marker, replace that
+                        if (marker != null){
+                            marker.remove();
+                            marker = mMap.addMarker(new MarkerOptions().
+                                    position(latLng).
+                                    title(result)
+                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                            mMap.setMaxZoomPreference(20);
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.0f));
+                        }
+
+                        // Else add new one
+                        else {
+                            marker = mMap.addMarker(new MarkerOptions().
+                                    position(latLng).
+                                    title(result)
+                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                            mMap.setMaxZoomPreference(20);
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.0f));
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -83,8 +116,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 }
             });
+
+            // Else we can request from GPS provider, the code is exactly the same
         } else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, new LocationListener() {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
                     double latitude = location.getLatitude();
@@ -96,10 +131,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     try {
                         List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
-                        String str = addressList.get(0).getLocality();
-                        str = str + addressList.get(0).getCountryName();
-                        mMap.addMarker(new MarkerOptions().position(latLng).title(str));
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.2f));
+
+                        String result = "";
+                        String cityName = addressList.get(0).getAddressLine(0);
+                        String stateName = addressList.get(0).getAddressLine(1);
+                        String countryName = addressList.get(0).getAddressLine(2);
+
+                        result = result + " " + cityName + stateName + countryName;
+                        if (marker != null){
+                            marker.remove();
+                            marker = mMap.addMarker(new MarkerOptions().
+                                            position(latLng).
+                                            title(result)
+                                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                            mMap.setMaxZoomPreference(20);
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.0f));
+                        }
+                        else {
+                            marker = mMap.addMarker(new MarkerOptions().
+                                    position(latLng).
+                                    title(result)
+                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                            mMap.setMaxZoomPreference(20);
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.0f));
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -125,19 +180,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
     }
 }
