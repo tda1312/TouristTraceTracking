@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        android:title="@string/tittle_noti">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/key_noti"
+            android:title="@string/tittle_noti_switch" />
+
+        <Preference
+            android:dependency="@string/key_noti"
+            android:key="@string/key_ringtone"
+            android:title="@string/tittle_ringtone"
+            android:summary="@string/summary_ringtone" />
+
+        <SwitchPreference
+            android:title="@string/tittle_vibrate"
+            android:key="@string/key_vibrate"
+            android:summary="@string/summary_vibrate"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Language">
+
+        <ListPreference
+            android:key="@string/key_language"
+            android:title="@string/tittle_language"
+            android:dialogTitle="@string/tittle_select_language"
+            android:entries="@array/pref_language_entries"
+            android:entryValues="@array/pref_language_values"
+            android:summary="@string/summary_language" >
+
+        </ListPreference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="util"
+        android:title="Utilities">
+
+        <Preference
+            android:key="util_theme"
+            android:title="Theme"
+            android:summary="Try out some other cool themes" />
+
+        <Preference
+            android:key="@string/key_send_feedback"
+            android:title="@string/tittle_send_feedback"
+            android:summary="Got any queries? Send us!" />
+
+        <Preference
+            android:key="about"
+            android:title="About us"
+            android:summary="Developer team information" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/url_about" />
+        </Preference>
+
+        <Preference
+            android:key="privacy"
+            android:title="Privacy policy" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="@string/url_privacy_policy" />
+        </Preference>
+
+    </PreferenceCategory>
+</PreferenceScreen>

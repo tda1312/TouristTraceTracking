@@ -9,4 +9,14 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+    
+    <string-array name="pref_language_entries">
+        <item>English</item>
+        <item>Vietnamese</item>
+    </string-array>
+    
+    <string-array name="pref_language_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
 </resources>

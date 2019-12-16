@@ -4,4 +4,24 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="url_about">https://www.facebook.com/thivu.truongsi</string>
+    <string name="url_privacy_policy">https://www.facebook.com/thivu.truongsi</string>
+    <string name="key_send_feedback">key_send_feedback</string>
+    <string name="tittle_send_feedback">Send Feedback</string>
+    <string name="key_language">key_language</string>
+    <string name="tittle_language">Language</string>
+    <string name="tittle_select_language">Select language</string>
+    <string name="summary_language">Choose an alternative language</string>
+    <string name="choose_email_client">Choose email client</string>
+    <string name="tittle_noti">Notifications</string>
+    <string name="key_noti">key_noti</string>
+    <string name="tittle_noti_switch">Enable notifications</string>
+    <string name="summary_ringtone">Choose notification sound</string>
+    <string name="key_ringtone">key_ringtone</string>
+    <string name="tittle_ringtone">Ringtone</string>
+    <string name="key_ringtone_silent">key_silent</string>
+    <string name="tittle_ringtone_silent">Silent</string>
+    <string name="key_vibrate">key_vibrate</string>
+    <string name="tittle_vibrate">Vibrate</string>
+    <string name="summary_vibrate">Enable vibration on new notifications</string>
 </resources>
