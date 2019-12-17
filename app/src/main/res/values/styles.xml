@@ -14,5 +14,19 @@
         <item name="android:colorAccent">#ffffff</item>
         <item name="android:textColorHint">#ffffff</item>
     </style>
+    <style name="myEditTextStyle1">
+        <item name="android:colorControlNormal">#000000</item>
+        <item name="android:colorControlActivated">#000000</item>
+        <item name="android:colorControlHighlight">#000000</item>
+        <item name="android:colorAccent">#000000</item>
+        <item name="android:textColorHint">#000000</item>
+    </style>
+    <style name="Divider">
+        <item name="android:background">?android:attr/listDivider</item> //you can give your color here. that will change all divider color in your app.
+    </style>
+    <style name="Divider.Horizontal" parent="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item> // You can change thickness here.
 
+    </style>
 </resources>

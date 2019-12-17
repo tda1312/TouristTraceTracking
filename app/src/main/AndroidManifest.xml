@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".FavoriteActivity" ></activity>
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".RegisterActivity" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".RegisterActivity" android:windowSoftInputMode="stateHidden|adjustResize"></activity>
         <activity android:name=".MapsActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
