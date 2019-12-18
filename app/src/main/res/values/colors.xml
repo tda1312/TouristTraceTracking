@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="darkBlue">#000033</color>
+    <color name="gradStart">#19AA8B</color>
+    <color name="gradTop">#23A7D8</color>
 </resources>
