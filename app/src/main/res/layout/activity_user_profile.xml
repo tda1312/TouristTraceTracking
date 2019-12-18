@@ -7,11 +7,12 @@
     tools:context=".UserProfileActivity"
     android:background="#ffffff">
 
+
     <ImageView
 
         android:id="@+id/backgroud_ava"
-        android:layout_width="424dp"
-        android:layout_height="235dp"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
         android:background="@drawable/goodmorning"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,67 +38,178 @@
     </Button>
 
     <androidx.constraintlayout.widget.Guideline
+
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.225"/>
+        app:layout_constraintGuide_percent="0.1"/>
 
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/Image"
+            android:layout_marginTop="220dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/backgroud_ava"
+            app:layout_constraintBottom_toTopOf="@id/Profile">
 
-    <TableLayout
-        android:id="@+id/txt_firstname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:stretchColumns="1"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="110dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/backgroud_ava"
-        >
-        <TableRow>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:focusableInTouchMode="true"
+                android:src="@drawable/ava"
+                app:civ_border_color="#ffffff"
+                app:civ_border_width="1dp"
+                app:layout_constraintBottom_toTopOf="@id/change_ava"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@id/txt_firstname"
-                android:layout_width="129dp"
-                android:layout_marginStart="10dp"
-                android:drawableStart="@drawable/name"
-                android:padding="10dip"
-                android:text=" Name:"
-                android:textColor="#000000"
-                android:textSize="15dp" />
+                android:id="@+id/change_ava"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Change your Image"
+                android:textColor="@color/gradStart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile_image">
 
-            <EditText
-                android:layout_width="261dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="100dp"
-                android:background="#ffffffff"
-                android:gravity="left"
-                android:hint="Your name"
-                android:padding="10dip"
-                android:text=""
-                android:textColor="#000000"
-                android:textSize="15dp" />
-        </TableRow>
-    </TableLayout>
+            </TextView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TableLayout
-        android:id="@+id/txt_date_of_birth"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginTop="10dp"
-        android:textColorHint="#000000"
-        app:layout_constraintStart_toStartOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Profile"
+        android:layout_width="wrap_content"
+        android:layout_height="310dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_firstname"
-        >
-        <!--<com.santalu.maskedittext.MaskEditText
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@id/Image"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TableLayout
+                    android:id="@+id/txt_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="15dp"
+                    android:textColorHint="#000000"
+
+
+                    >
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_marginStart="10dp"
+
+                            android:padding="10dip"
+                            android:text=" First Name:"
+                            android:textColor="#000000"
+                            android:textSize="15dp" />
+
+                        <EditText
+                            android:lines="1"
+                            android:layout_width="265dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="50dp"
+                            android:background="#ffffffff"
+                            android:gravity="left"
+                            android:hint="Your First Name"
+                            android:inputType="text"
+                            android:padding="10dip"
+                            android:text="Truong"
+                            android:textColor="#000000"
+                            android:textSize="15dp" />
+                    </TableRow>
+
+
+                </TableLayout>
+
+                <TableLayout
+
+                    android:id="@+id/txt_lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="15dp"
+                    android:textColorHint="#000000"
+
+
+                    >
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_marginStart="10dp"
+
+                            android:padding="10dip"
+                            android:text=" Last Name:"
+
+                            android:textColor="#000000"
+                            android:textSize="15dp" />
+
+                        <EditText
+                            android:layout_width="296dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="50dp"
+                            android:background="#ffffffff"
+                            android:gravity="left"
+                            android:hint="Your Last Name"
+                            android:inputType="text"
+                            android:padding="10dip"
+                            android:text="Thi Vu"
+                            android:lines="1"
+
+                            android:textColor="#000000"
+                            android:textSize="15dp" />
+                    </TableRow>
+
+
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/txt_date_of_birth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="15dp"
+                    android:textColorHint="#000000">
+                    <!--<com.santalu.maskedittext.MaskEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Date of birth"
@@ -111,159 +223,264 @@
             app:met_mask="##/##/####"
 
             />-->
-        <TableRow>
+                    <TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_marginStart="10dp"
-                android:drawableStart="@drawable/baseline_cake_black_18dp"
-                android:padding="10dip"
-                android:text=" Date of birth:"
-                android:textColor="#000000"
-                android:textSize="15dp" />
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_marginStart="10dp"
 
-            <com.santalu.maskedittext.MaskEditText
-                android:layout_width="262dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="50dp"
-                android:background="#ffffff"
-                android:gravity="left"
-                android:hint="Date of birth"
-                android:padding="10dip"
-                android:text="20/10/1999"
-                android:textColor="#000000"
-                android:textSize="15dp"
-                app:met_mask="##/##/####" />
-        </TableRow>
-    </TableLayout>
-    <TableLayout
-        android:id="@+id/txt_nationality"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginTop="10dp"
-        android:textColorHint="#000000"
+                            android:padding="10dip"
+                            android:text=" Date of birth:"
+                            android:textColor="#000000"
+                            android:textSize="15dp" />
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_date_of_birth"
-        >
-        <TableRow>
+                        <com.santalu.maskedittext.MaskEditText
+                            android:layout_width="277dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="50dp"
+                            android:background="#ffffff"
+                            android:lines="1"
 
-            <TextView
-                android:layout_width="129dp"
-                android:layout_marginStart="10dp"
-                android:drawableStart="@drawable/sharp_language_black_18dp"
-                android:padding="10dip"
-                android:text=" Nationality:"
-                android:textColor="#000000"
-                android:textSize="15dp" />
+                            android:gravity="left"
+                            android:hint="Date of birth"
+                            android:padding="10dip"
+                            android:text="20/10/1999"
+                            android:textColor="#000000"
+                            android:textSize="15dp"
+                            app:met_mask="##/##/####" />
+                    </TableRow>
+                </TableLayout>
 
-            <EditText
-
-                android:layout_width="264dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="50dp"
-                android:background="#ffffffff"
-                android:gravity="left"
-                android:hint="Nationality"
-                android:padding="10dip"
-                android:text="Viet Nam"
-                android:textColor="#000000"
-                android:textSize="15dp" />
-        </TableRow>
-    </TableLayout>>
-    <TableLayout
-        android:id="@+id/txt_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:textColorHint="#000000"
+                <TableLayout
+                    android:id="@+id/txt_email2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="15dp"
+                    android:textColorHint="#000000"
 
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_nationality"
-        >
-        <TableRow>
+                    >
 
-            <TextView
-                android:layout_width="129dp"
-                android:layout_marginStart="10dp"
-                android:drawableStart="@drawable/sharp_email_black_18dp"
-                android:padding="10dip"
-                android:text=" Email:"
-                android:textColor="#000000"
-                android:textSize="15dp" />
+                    <TableRow>
 
-            <EditText
-                android:layout_width="265dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="50dp"
-                android:background="#ffffffff"
-                android:gravity="left"
-                android:hint="Email"
-                android:textSize="15dp"
-                android:padding="10dip"
-                android:text="vungu@gmail.com"
-                android:textColor="#000000" />
-        </TableRow>
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_marginStart="10dp"
+
+                            android:inputType="number"
+                            android:padding="10dip"
+                            android:text=" Phone:"
+                            android:textColor="#000000"
+
+                            android:textSize="15dp" />
+
+                        <EditText
+                            android:layout_width="265dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="50dp"
+                            android:background="#ffffffff"
+                            android:gravity="left"
+                            android:hint="Your Email"
+                            android:lines="1"
+
+                            android:padding="10dip"
+                            android:text="vungu@gmail.com"
+                            android:textColor="#000000"
+                            android:textSize="15dp" />
+                    </TableRow>
 
 
-    </TableLayout>
+                </TableLayout>
 
-    <View
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_height="1dp"
-        android:background="#000000"
-        app:layout_constraintTop_toBottomOf="@id/txt_email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/Divider.Horizontal">
+                <TableLayout
+                    android:id="@+id/txt_nationality"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="15dp"
+                    android:textColorHint="#000000"
 
-    </View>
+                    >
 
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_marginStart="10dp"
+
+                            android:padding="10dip"
+                            android:text=" Nationality:"
+                            android:textColor="#000000"
+                            android:textSize="15dp" />
+
+                        <EditText
+
+                            android:layout_width="264dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="50dp"
+                            android:background="#ffffffff"
+                            android:gravity="left"
+                            android:hint="Your Nationality"
+                            android:lines="1"
+                            android:inputType="text"
+                            android:padding="10dip"
+                            android:text="Viet Nam"
+                            android:textColor="#000000"
+                            android:textSize="15dp" />
+                    </TableRow>
+                </TableLayout>
+
+
+                <TableLayout
+                    android:id="@+id/txt_email1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="15dp"
+                    android:textColorHint="#000000"
+
+
+                    >
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_marginStart="10dp"
+                            android:padding="10dip"
+                            android:text=" Email:"
+                            android:textColor="#000000"
+                            android:textSize="15dp" />
+
+                        <EditText
+                            android:layout_width="265dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="50dp"
+                            android:background="#ffffffff"
+                            android:gravity="left"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress"
+                            android:padding="10dip"
+                            android:text="vungu@gmail.com"
+                            android:lines="1"
+
+                            android:textColor="#000000"
+                            android:textSize="15dp" />
+                    </TableRow>
+
+
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/txt_email3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="15dp"
+                    android:textColorHint="#000000"
+
+
+                    >
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_marginStart="10dp"
+                            android:padding="10dip"
+                            android:text=" Country :"
+
+                            android:textColor="#000000"
+                            android:textSize="15dp" />
+
+                        <EditText
+                            android:layout_width="265dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="50dp"
+                            android:background="#ffffffff"
+                            android:gravity="left"
+                            android:hint="Your Country:"
+                            android:inputType="text"
+                            android:padding="10dip"
+                            android:text="Viet Nam"
+                            android:lines="1"
+
+                            android:textColor="#000000"
+                            android:textSize="15dp" />
+                    </TableRow>
+
+
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/txt_email4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="15dp"
+                    android:textColorHint="#000000"
+
+
+                    >
+
+                    <TableRow>
+
+                        <TextView
+                            android:layout_width="120dp"
+                            android:layout_marginStart="10dp"
+                            android:padding="10dip"
+                            android:text=" City:"
+                            android:textColor="#000000"
+                            android:textSize="15dp" />
+
+                        <EditText
+                            android:layout_width="265dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="50dp"
+                            android:background="#ffffffff"
+                            android:gravity="left"
+                            android:hint="Your City"
+                            android:padding="10dip"
+                            android:inputType="text"
+                            android:lines="1"
+
+                            android:text="vungu@gmail.com"
+                            android:textColor="#000000"
+                            android:textSize="15dp" />
+                    </TableRow>
+
+
+                </TableLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <fragment
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Profile"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:name="vn.edu.usth.touristtracetracking.TapBarFragment"
         android:id="@+id/tapBarFragment"
         android:visibility="gone"
-
         >
     </fragment>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="60dp"
-        android:src="@drawable/ava"
-        app:civ_border_color="#ffffff"
-        app:civ_border_width="1dp"
-        app:layout_constraintBottom_toTopOf="@id/txt_firstname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent" />
-    <TextView
-        android:textColor="@color/gradStart"
-        android:layout_marginTop="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/profile_image"
-        app:layout_constraintBottom_toTopOf="@id/txt_firstname"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="Change your Image">
-
-    </TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>
