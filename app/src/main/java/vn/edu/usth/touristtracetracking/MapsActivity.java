@@ -20,6 +20,7 @@ import android.widget.ImageView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -30,6 +31,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.michaldrabik.tapbarmenulib.TapBarMenu;
 
 // 10 DECEMBER 2019
@@ -41,21 +43,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     LocationManager locationManager;
     Marker marker;
+    boolean camaraSet = false;
 
     //Tap Bar Menu
     // TapBarMenu tapBarMenu;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
         // Tab Bar Menu created
         /* tapBarMenu = findViewById(R.id.tapBarMenu);
         tapBarMenu.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +99,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Set onClickListeners
 
         // Checks for permissions, request if not granted
-        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     REQUEST_LOCATION_PERMISSION);
@@ -115,6 +115,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     // Get coordinates
                     double latitude = location.getLatitude();
                     double longitude = location.getLongitude();
+
+                    userLocationFAB(location);
 
                     LatLng latLng = new LatLng(latitude, longitude);
 
@@ -132,13 +134,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         result = result + " " + cityName + stateName + countryName;
 
                         // If there is already a marker, replace that
-                        if (marker != null){
+                        if (marker != null) {
                             marker.remove();
                             marker = mMap.addMarker(new MarkerOptions().
                                     position(latLng).
                                     title(result)
                                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-                            mMap.setMaxZoomPreference(20);
+//                            mMap.setMaxZoomPreference(20);
+//                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
                         }
 
                         // Else add new one
@@ -147,7 +150,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                     position(latLng).
                                     title(result)
                                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-                            mMap.setMaxZoomPreference(20);
+                            if(camaraSet == false) {
+                                mMap.setMaxZoomPreference(20);
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
+                                camaraSet = true;
+                            }
+
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -179,44 +187,44 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     double latitude = location.getLatitude();
                     double longitude = location.getLongitude();
 
-                    LatLng latLng = new LatLng(latitude,longitude);
+                    userLocationFAB(location);
+
+                    LatLng latLng = new LatLng(latitude, longitude);
 
                     Geocoder geocoder = new Geocoder(getApplicationContext());
 
                     try {
                         List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
-
                         String result = "";
                         String cityName = addressList.get(0).getAddressLine(0);
                         String stateName = addressList.get(0).getAddressLine(1);
                         String countryName = addressList.get(0).getAddressLine(2);
 
                         result = result + " " + cityName + stateName + countryName;
-                        if (marker != null){
+                        if (marker != null) {
                             marker.remove();
-                            marker = mMap.addMarker(new MarkerOptions().
-                                            position(latLng).
-                                            title(result)
-                                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-                            mMap.setMaxZoomPreference(20);
-                        }
-                        else {
                             marker = mMap.addMarker(new MarkerOptions().
                                     position(latLng).
                                     title(result)
                                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-                            mMap.setMaxZoomPreference(20);
+//                            mMap.setMaxZoomPreference(20);
+//                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
+                        } else {
+                            marker = mMap.addMarker(new MarkerOptions().position(latLng).title(result).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                            if(!camaraSet) {
+                                mMap.setMaxZoomPreference(20);
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
+                                camaraSet = true;
+                            }
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-
                 @Override
                 public void onStatusChanged(String provider, int status, Bundle extras) {
 
                 }
-
                 @Override
                 public void onProviderEnabled(String provider) {
 
@@ -230,6 +238,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
 
+    }
+
+    private void userLocationFAB(Location location) {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    Activity#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for Activity#requestPermissions for more details.
+            return;
+        }
+        //Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+        double latitude = location.getLatitude();
+        double longitude = location.getLongitude();
+        final LatLng latLng = new LatLng(latitude, longitude);
+
+        FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.button_location);
+
+        FAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(latLng != null){
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
+                }
+            }
+        });
     }
 
     /*public void onMenuItemClick(View view) {
@@ -261,6 +299,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        //userLocationFAB();
         mMap = googleMap;
         if (ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
@@ -271,20 +310,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         // If first time open, zoom in then allow user to move around while updating the markers
-        if (firstTime) {
+        /*if (firstTime) {
             firstTime = false;
             LocationManager locationManager = (LocationManager)
                     getSystemService(Context.LOCATION_SERVICE);
             Criteria criteria = new Criteria();
-            Location location = locationManager.getLastKnownLocation(locationManager
-                    .getBestProvider(criteria, false));
+            Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
             double latitude = location.getLatitude();
             double longitude = location.getLongitude();
 
             LatLng latLng = new LatLng(latitude, longitude);
-
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.0f));
-        }
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
+        }*/
 
     }
 }

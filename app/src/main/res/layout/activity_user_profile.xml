@@ -24,18 +24,7 @@
 
     </ImageView>
 
-    <Button
 
-        android:id="@+id/bt_save"
-        android:layout_width="71dp"
-        android:layout_height="41dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:text="Save"
-        android:textSize="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </Button>
 
     <androidx.constraintlayout.widget.Guideline
 
@@ -55,6 +44,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/backgroud_ava"
             app:layout_constraintBottom_toTopOf="@id/Profile">
+
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
@@ -83,12 +73,13 @@
                 app:layout_constraintTop_toBottomOf="@id/profile_image">
 
             </TextView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Profile"
         android:layout_width="wrap_content"
-        android:layout_height="310dp"
+        android:layout_height="294dp"
         android:layout_marginTop="30dp"
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,20 +124,19 @@
                             android:layout_marginStart="10dp"
 
                             android:padding="10dip"
-                            android:text=" First Name:"
+                            android:text=" First Name"
                             android:textColor="#000000"
                             android:textSize="15dp" />
 
                         <EditText
-                            android:lines="1"
-                            android:layout_width="265dp"
+                            android:layout_width="279dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="50dp"
-                            android:background="#ffffffff"
                             android:gravity="left"
                             android:hint="Your First Name"
                             android:inputType="text"
-                            android:padding="10dip"
+                            android:lines="1"
+                            android:padding="12dip"
                             android:text="Truong"
                             android:textColor="#000000"
                             android:textSize="15dp" />
@@ -161,9 +151,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="0dp"
                     android:layout_marginEnd="0dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="10dp"
                     android:textColorHint="#000000"
 
 
@@ -174,24 +164,21 @@
                         <TextView
                             android:layout_width="120dp"
                             android:layout_marginStart="10dp"
-
                             android:padding="10dip"
-                            android:text=" Last Name:"
-
+                            android:text=" Last Name "
                             android:textColor="#000000"
                             android:textSize="15dp" />
 
                         <EditText
-                            android:layout_width="296dp"
+                            android:layout_width="277dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="50dp"
-                            android:background="#ffffffff"
                             android:gravity="left"
                             android:hint="Your Last Name"
                             android:inputType="text"
-                            android:padding="10dip"
-                            android:text="Thi Vu"
                             android:lines="1"
+                            android:padding="12dp"
+                            android:text="Thi Vu"
 
                             android:textColor="#000000"
                             android:textSize="15dp" />
@@ -205,9 +192,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="10dp"
+
                     android:layout_marginEnd="0dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="10dp"
                     android:textColorHint="#000000">
                     <!--<com.santalu.maskedittext.MaskEditText
             android:layout_width="match_parent"
@@ -228,9 +215,8 @@
                         <TextView
                             android:layout_width="120dp"
                             android:layout_marginStart="10dp"
-
                             android:padding="10dip"
-                            android:text=" Date of birth:"
+                            android:text=" Date of birth "
                             android:textColor="#000000"
                             android:textSize="15dp" />
 
@@ -238,12 +224,11 @@
                             android:layout_width="277dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="50dp"
-                            android:background="#ffffff"
-                            android:lines="1"
-
                             android:gravity="left"
+
                             android:hint="Date of birth"
-                            android:padding="10dip"
+                            android:lines="1"
+                            android:padding="12dip"
                             android:text="20/10/1999"
                             android:textColor="#000000"
                             android:textSize="15dp"
@@ -256,9 +241,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="0dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="10dp"
                     android:textColorHint="#000000"
 
 
@@ -269,25 +253,24 @@
                         <TextView
                             android:layout_width="120dp"
                             android:layout_marginStart="10dp"
-
                             android:inputType="number"
                             android:padding="10dip"
-                            android:text=" Phone:"
+                            android:text=" Phone"
                             android:textColor="#000000"
 
                             android:textSize="15dp" />
 
                         <EditText
-                            android:layout_width="265dp"
+                            android:layout_width="279dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="50dp"
-                            android:background="#ffffffff"
+
                             android:gravity="left"
-                            android:hint="Your Email"
+                            android:hint="Your Phone"
                             android:lines="1"
 
-                            android:padding="10dip"
-                            android:text="vungu@gmail.com"
+                            android:padding="12dip"
+                            android:text=""
                             android:textColor="#000000"
                             android:textSize="15dp" />
                     </TableRow>
@@ -300,9 +283,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="0dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="10dp"
                     android:textColorHint="#000000"
 
                     >
@@ -314,21 +296,21 @@
                             android:layout_marginStart="10dp"
 
                             android:padding="10dip"
-                            android:text=" Nationality:"
+                            android:text=" Nationality"
                             android:textColor="#000000"
                             android:textSize="15dp" />
 
                         <EditText
 
-                            android:layout_width="264dp"
+                            android:layout_width="277dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="50dp"
-                            android:background="#ffffffff"
+
                             android:gravity="left"
                             android:hint="Your Nationality"
-                            android:lines="1"
                             android:inputType="text"
-                            android:padding="10dip"
+                            android:lines="1"
+                            android:padding="12dip"
                             android:text="Viet Nam"
                             android:textColor="#000000"
                             android:textSize="15dp" />
@@ -341,9 +323,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="0dp"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="10dp"
                     android:textColorHint="#000000"
 
 
@@ -355,21 +336,20 @@
                             android:layout_width="120dp"
                             android:layout_marginStart="10dp"
                             android:padding="10dip"
-                            android:text=" Email:"
+                            android:text=" Email"
                             android:textColor="#000000"
                             android:textSize="15dp" />
 
                         <EditText
-                            android:layout_width="265dp"
+                            android:layout_width="273dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="50dp"
-                            android:background="#ffffffff"
                             android:gravity="left"
-                            android:hint="Email"
+                            android:hint="Your Email"
                             android:inputType="textEmailAddress"
-                            android:padding="10dip"
-                            android:text="vungu@gmail.com"
                             android:lines="1"
+                            android:padding="12dip"
+                            android:text=""
 
                             android:textColor="#000000"
                             android:textSize="15dp" />
@@ -397,22 +377,22 @@
                             android:layout_width="120dp"
                             android:layout_marginStart="10dp"
                             android:padding="10dip"
-                            android:text=" Country :"
+                            android:text=" Country"
 
                             android:textColor="#000000"
                             android:textSize="15dp" />
 
                         <EditText
-                            android:layout_width="265dp"
+                            android:layout_width="282dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="50dp"
-                            android:background="#ffffffff"
+
                             android:gravity="left"
                             android:hint="Your Country:"
                             android:inputType="text"
-                            android:padding="10dip"
-                            android:text="Viet Nam"
                             android:lines="1"
+                            android:padding="12dip"
+                            android:text="Viet Nam"
 
                             android:textColor="#000000"
                             android:textSize="15dp" />
@@ -440,28 +420,30 @@
                             android:layout_width="120dp"
                             android:layout_marginStart="10dp"
                             android:padding="10dip"
-                            android:text=" City:"
+                            android:text=" City "
                             android:textColor="#000000"
                             android:textSize="15dp" />
 
                         <EditText
-                            android:layout_width="265dp"
+                            android:layout_width="273dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="50dp"
-                            android:background="#ffffffff"
+
                             android:gravity="left"
                             android:hint="Your City"
-                            android:padding="10dip"
                             android:inputType="text"
                             android:lines="1"
+                            android:padding="12dip"
 
-                            android:text="vungu@gmail.com"
+                            android:text="Ha Noi"
                             android:textColor="#000000"
                             android:textSize="15dp" />
                     </TableRow>
 
 
                 </TableLayout>
+
+
 
 
             </LinearLayout>
@@ -482,5 +464,21 @@
         android:visibility="gone"
         >
     </fragment>
+
+    <Button
+        android:id="@+id/bt_save"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:text="Save"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="0dp">
+
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
