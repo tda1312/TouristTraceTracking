@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <PreferenceCategory
         android:title="@string/tittle_noti">
 
@@ -23,7 +24,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="Language">
+        android:title="@string/tittle_language">
 
         <ListPreference
             android:key="@string/key_language"
@@ -38,31 +39,36 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="util"
-        android:title="Utilities">
+        android:key="@string/key_util"
+        android:title="@string/tittle_util">
 
-        <Preference
-            android:key="util_theme"
-            android:title="Theme"
-            android:summary="Try out some other cool themes" />
+        <ListPreference
+            android:key="@string/key_theme"
+            android:title="@string/tittle_theme"
+            android:dialogTitle="@string/tittle_select_theme"
+            android:entries="@array/pref_theme_entries"
+            android:entryValues="@array/pref_theme_values"
+            android:summary="@string/summary_theme" >
+
+        </ListPreference>
 
         <Preference
             android:key="@string/key_send_feedback"
             android:title="@string/tittle_send_feedback"
-            android:summary="Got any queries? Send us!" />
+            android:summary="@string/summary_feedback" />
 
         <Preference
-            android:key="about"
-            android:title="About us"
-            android:summary="Developer team information" >
+            android:key="@string/key_about"
+            android:title="@string/tittle_about"
+            android:summary="@string/summary_about" >
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="@string/url_about" />
         </Preference>
 
         <Preference
-            android:key="privacy"
-            android:title="Privacy policy" >
+            android:key="@string/key_privacy"
+            android:title="@string/tittle_privacy" >
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="@string/url_privacy_policy" />

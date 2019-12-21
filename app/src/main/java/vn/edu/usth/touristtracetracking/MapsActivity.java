@@ -194,16 +194,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         result = result + " " + cityName + stateName + countryName;
                         if (marker != null){
                             marker.remove();
-                            marker = mMap.addMarker(new MarkerOptions().
-                                            position(latLng).
-                                            title(result)
+                            marker = mMap.addMarker(new MarkerOptions()
+                                            .position(latLng)
+                                            .title(result)
                                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
                             mMap.setMaxZoomPreference(20);
                         }
                         else {
-                            marker = mMap.addMarker(new MarkerOptions().
-                                    position(latLng).
-                                    title(result)
+                            marker = mMap.addMarker(new MarkerOptions()
+                                    .position(latLng)
+                                    .title(result)
                                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
                             mMap.setMaxZoomPreference(20);
                         }
@@ -247,7 +247,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
             case R.id.item3:
                 Log.i("TAG", "Item 3 selected");
-                Intent FavoriteIntent = new Intent(MapsActivity.this, FavoriteActivity.class);
+                Intent FavoriteIntent = new Intent(MapsActivity.this, HistoryActivity.class);
                 startActivity(FavoriteIntent);
                 break;
             case R.id.item4:
