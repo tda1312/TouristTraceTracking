@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/goodmorning"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="-16dp">
 
@@ -84,7 +84,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_password"
+            app:layout_constraintTop_toBottomOf="@+id/ed_password"
             app:layout_constraintVertical_bias="0.584" />
 
         <TextView
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:theme="@style/myEditTextStyle"
-            app:layout_constraintBottom_toTopOf="@+id/txt_password"
+            app:layout_constraintBottom_toTopOf="@+id/ed_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txbyTime"
@@ -129,7 +129,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txt_password"
+            android:id="@+id/ed_password"
             android:layout_width="300dp"
             android:layout_marginBottom="40dp"
             android:layout_height="wrap_content"
