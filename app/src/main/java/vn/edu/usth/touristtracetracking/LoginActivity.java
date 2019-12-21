@@ -21,7 +21,6 @@ import java.util.Calendar;
 public class LoginActivity extends AppCompatActivity {
     ConstraintLayout constraintLayout, constraint1;
     LinearLayout linearLayout;
-    TextInputEditText edEmail, edPassword;
     TextView txbyTime;
     Handler handler= new Handler();
     Runnable runnable = new Runnable() {
@@ -35,8 +34,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        edEmail = (TextInputEditText)findViewById(R.id.ed_email);
-        edPassword=(TextInputEditText)findViewById(R.id.ed_password);
         constraint1 =(ConstraintLayout) findViewById(R.id.layout1);
         handler.postDelayed(runnable,3000);
 
