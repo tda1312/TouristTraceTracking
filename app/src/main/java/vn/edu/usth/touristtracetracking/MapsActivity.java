@@ -16,6 +16,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -38,7 +39,6 @@ import com.michaldrabik.tapbarmenulib.TapBarMenu;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     public boolean firstTime = true;
-
     private GoogleMap mMap;
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     LocationManager locationManager;
@@ -49,7 +49,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     // TapBarMenu tapBarMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
