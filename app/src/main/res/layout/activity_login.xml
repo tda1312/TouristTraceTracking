@@ -31,11 +31,11 @@
         tools:layout_editor_absoluteX="-16dp">
 
         <TextView
-            android:foregroundGravity="center"
             android:id="@+id/txbyTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:foregroundGravity="center"
             android:gravity="center"
             android:shadowColor="#000000"
             android:shadowDx="1.5"
@@ -49,9 +49,10 @@
             app:layout_constraintBottom_toTopOf="@id/bt_Signup"
             app:layout_constraintEnd_toEndOf="parent"
 
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.009" />
+            app:layout_constraintVertical_bias="0.091" />
 
         <Button
             android:id="@+id/bt_Signup"
@@ -115,7 +116,8 @@
             app:layout_constraintTop_toBottomOf="@+id/txbyTime"
             app:layout_constraintVertical_bias="1.0">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="200dp"
@@ -123,8 +125,8 @@
                 android:hint="Your Email"
                 android:inputType="textEmailAddress"
                 android:lines="1"
+                android:backgroundTint="#ffffff"
                 android:textColor="#ffffff"
-                android:theme="@style/myEditTextStyle"
                 app:layout_constraintVertical_bias="0.003" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,7 +142,8 @@
             app:layout_constraintTop_toBottomOf="@+id/txbyTime"
             app:layout_constraintVertical_bias="0.74">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <EditText
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_lock_white_24dp"
@@ -148,6 +151,7 @@
                 android:inputType="textPassword"
                 android:lines="1"
                 android:textColor="#ffffff"
+                android:backgroundTint="#ffffff"
                 android:theme="@style/myEditTextStyle"
                 app:layout_constraintBottom_toTopOf="@+id/txForgotPassword"
                 app:layout_constraintEnd_toEndOf="parent"
