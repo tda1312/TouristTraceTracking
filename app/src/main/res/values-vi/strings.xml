@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TouristTraceTracking</string>
+    <string name="summary_language">Chọn ngôn ngữ khác</string>
+    <string name="summary_ringtone">Chọn chuông thông báo</string>
+    <string name="summary_vibrate">Bật rung khi có thông báo mới</string>
+    <string name="title_activity_maps">Bản đồ</string>
+    <string name="tittle_language">Ngôn ngữ</string>
+    <string name="tittle_noti">Thông báo</string>
+    <string name="tittle_noti_switch">Bật thông báo</string>
+    <string name="tittle_ringtone">Chuông báo</string>
+    <string name="tittle_ringtone_silent">Im lặng</string>
+    <string name="tittle_select_language">Chọn ngôn ngữ</string>
+    <string name="tittle_send_feedback">Gửi ý kiến người dùng</string>
+    <string name="tittle_vibrate">Rung</string>
+    <string name="tittle_util">Tiện ích</string>
+    <string name="summary_about">Thông tin nhóm phát triển</string>
+    <string name="summary_feedback">Có câu hỏi gì? Gửi cho chúng tôi!</string>
+    <string name="summary_theme">Trải nghiệm vài chủ đề hay ho</string>
+    <string name="tittle_about">Về chúng tôi</string>
+    <string name="tittle_privacy">Điều khoản mảo mật</string>
+    <string name="tittle_theme">Chủ đề tối</string>
+    <string name="tittle_select_theme">Chọn chủ đề</string>
+    <string name="text_change_theme_dark">Tối</string>
+    <string name="text_change_theme_light">Sáng</string>
+</resources>
