@@ -31,19 +31,20 @@
         android:layout_marginEnd="10dp"
         android:textColorHint="#ffffff"
 
-        android:theme="@style/myEditTextStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/TextInputLayout_2"
         >
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Your Email"
             android:inputType="textEmailAddress"
             android:lines="1"
             android:shadowColor="#000000"
+            android:backgroundTint="#ffffff"
             android:shadowDx="2"
             android:shadowDy="1.3"
             android:shadowRadius="1.6"
@@ -67,12 +68,14 @@
         app:layout_constraintBottom_toTopOf="@+id/bt_Signup"
 
         >
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
             android:inputType="text"
             android:shadowColor="#000000"
+            android:backgroundTint="#ffffff"
             android:shadowDx="2"
             android:shadowDy="1.3"
             android:lines="1"
