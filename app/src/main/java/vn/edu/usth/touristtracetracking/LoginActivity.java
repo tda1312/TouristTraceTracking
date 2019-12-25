@@ -16,6 +16,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.Calendar;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import vn.edu.usth.touristtracetracking.Register.RegisterActivity;
 
 
@@ -23,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     ConstraintLayout constraintLayout, constraint1;
     LinearLayout linearLayout;
     TextView txbyTime;
-    Handler handler= new Handler();
+    Handler handler = new Handler();
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -31,79 +34,101 @@ public class LoginActivity extends AppCompatActivity {
 
         }
     };
-
+    private Button btSignin;
+    private EditText etEmail, etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
-        constraint1 =(ConstraintLayout) findViewById(R.id.layout1);
-        handler.postDelayed(runnable,3000);
+        constraint1 = findViewById(R.id.layout1);
+        handler.postDelayed(runnable, 3000);
 
-        Button btSignup = (Button)findViewById(R.id.bt_Signup);
-        btSignup.setOnClickListener(new View.OnClickListener(){
+        Button btSignup = findViewById(R.id.bt_Signup);
+        btSignup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
-        final Button btSignin = (Button)findViewById(R.id.bt_Signin);
-        final EditText etEmail = (EditText) findViewById(R.id.et_email);
-        final EditText etPassword = (EditText) findViewById(R.id.et_password);
+        Button btSignin = findViewById(R.id.bt_Signin);
+        EditText etEmail = findViewById(R.id.et_email);
+        EditText etPassword = findViewById(R.id.et_password);
         btSignin.setEnabled(true);
         btSignin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = etEmail.getText().toString();
+                String username = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
-                Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
-                intent.putExtra("email", email);
-                intent.putExtra("password", password);
 
-                if (!email.isEmpty() && !password.isEmpty()) {
-                    startActivity(intent);
+                // check username and password is empty or not
+                if (username.isEmpty()) {
+                    etEmail.setError("Username is required!");
+                    etEmail.requestFocus();
+                    return;
+                }
+                if (password.isEmpty()) {
+                    etPassword.setError("Password is required");
+                    etPassword.requestFocus();
+                    return;
                 }
 
-                else {
-                    Toast.makeText(getApplicationContext(), "Please fill the blank for log in ", Toast.LENGTH_LONG).show();
-                }
+                // call request to the server
+                Call<LoginResponse> call = RetrofitHandler
+                        .getInstance()
+                        .getApi()
+                        .userLogin(new LoginData(username, password));
 
+                call.enqueue(new Callback<LoginResponse>() {
+                    @Override
+                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                        LoginResponse loginResponse = response.body();
+
+                        if (loginResponse != null && loginResponse.isSuccess()) {
+                            Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+                            // save user
+                            // open map
+                            Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
+                            startActivity(intent);
+                        } else {
+                            String error = "Your username or password is not correct";
+                            Toast.makeText(LoginActivity.this, error, Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<LoginResponse> call, Throwable t) {
+
+                    }
+                });
             }
         });
-
-
-
 
         // change view by time of a day
         txbyTime = findViewById(R.id.txbyTime);
         Calendar c = Calendar.getInstance();
 
         int timeofDay = c.get(Calendar.HOUR_OF_DAY);
-        if(timeofDay >=0 && timeofDay <12){
+        if (timeofDay >= 0 && timeofDay < 12) {
             //moring
 
             txbyTime.setText("Good Morning");
-        }
-        else if(timeofDay>=12 && timeofDay<16){
+        } else if (timeofDay >= 12 && timeofDay < 16) {
             //afternoon
 
             txbyTime.setText("Good Afternoon");
-        }
-        else if(timeofDay>=16 && timeofDay<21){
+        } else if (timeofDay >= 16 && timeofDay < 21) {
             //evening
             txbyTime.setText("Good Evening");
-        }
-        else if(timeofDay>=16 && timeofDay<24){
+        } else if (timeofDay >= 16 && timeofDay < 24) {
             //night
 
             txbyTime.setText("Good Night");
         }
-    //getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
     }
-
-
 
 
 }

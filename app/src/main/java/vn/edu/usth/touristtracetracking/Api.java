@@ -15,4 +15,9 @@ public interface Api {
             @Body RegisterData body
     );
 
+    @Headers("Content-Type: application/json")
+    @POST("api/users/login")
+    Call<LoginResponse> userLogin(
+            @Body LoginData body
+    );
 }

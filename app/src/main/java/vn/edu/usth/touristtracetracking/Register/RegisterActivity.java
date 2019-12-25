@@ -63,19 +63,26 @@ public class RegisterActivity extends AppCompatActivity {
                 call.enqueue(new Callback<RegisterResult>() {
                     @Override
                     public void onResponse(Call<RegisterResult> call, Response<RegisterResult> response) {
-                        String s = response.body().getClient_id();
-                        response_message += "You successfully registered with id " + s + " " + response.body().getSuccess();
-                        Toast.makeText(getApplicationContext(), response_message, Toast.LENGTH_LONG).show();
-                    }
+                        RegisterResult result = response.body();
+                        if (result != null && result.getSuccess()) {
+                            String s = response.body().getClient_id();
+                            response_message += "You successfully registered with id " + s + " " + response.body().getSuccess();
+                            Toast.makeText(getApplicationContext(), response_message, Toast.LENGTH_LONG).show();
 
+                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                        } else {
+                            String error = "Your username is already taken! Please choose other username";
+                            Toast.makeText(RegisterActivity.this, error, Toast.LENGTH_LONG).show();
+                        }
+                    }
                     @Override
                     public void onFailure(Call<RegisterResult> call, Throwable t) {
                         Log.i("Fail", "fail");
                     }
                 });
 
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
+
             }
         });
 
