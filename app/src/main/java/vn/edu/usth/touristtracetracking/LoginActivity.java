@@ -3,9 +3,6 @@ package vn.edu.usth.touristtracetracking;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -17,11 +14,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-
 import java.util.Calendar;
+
+import vn.edu.usth.touristtracetracking.Register.RegisterActivity;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -50,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         btSignup.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
         final Button btSignin = (Button)findViewById(R.id.bt_Signin);
