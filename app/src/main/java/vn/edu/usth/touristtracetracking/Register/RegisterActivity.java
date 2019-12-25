@@ -16,12 +16,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
-import vn.edu.usth.touristtracetracking.Api;
 import vn.edu.usth.touristtracetracking.LoginActivity;
 import vn.edu.usth.touristtracetracking.R;
+import vn.edu.usth.touristtracetracking.RetrofitHandler;
 
 public class RegisterActivity extends AppCompatActivity {
     ConstraintLayout constraintLayout;
@@ -39,15 +36,6 @@ public class RegisterActivity extends AppCompatActivity {
         final Button btSignup = (Button)findViewById(R.id.bt_Signup);
         etEmail = (EditText) findViewById(R.id.et_email);
         etPassword = (EditText) findViewById(R.id.et_password);
-
-        final Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://ec2-52-221-183-90.ap-southeast-1.compute.amazonaws.com:443/")
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        final Api service = retrofit.create(Api.class);
-
-
 
         btSignup.setEnabled(true);
         btSignup.setOnClickListener(new View.OnClickListener() {
@@ -68,21 +56,21 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-
-
-                Call<RegisterResult> call = service.createUser(new RegisterData(username, password));
+                Call<RegisterResult> call = RetrofitHandler
+                        .getInstance()
+                        .getApi()
+                        .createUser(new RegisterData(username, password));
                 call.enqueue(new Callback<RegisterResult>() {
                     @Override
                     public void onResponse(Call<RegisterResult> call, Response<RegisterResult> response) {
                         String s = response.body().getClient_id();
                         response_message += "You successfully registered with id " + s + " " + response.body().getSuccess();
-                        Log.i("ABCDE", response_message);
                         Toast.makeText(getApplicationContext(), response_message, Toast.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void onFailure(Call<RegisterResult> call, Throwable t) {
-                        Log.i("ABCDE", "fail");
+                        Log.i("Fail", "fail");
                     }
                 });
 
