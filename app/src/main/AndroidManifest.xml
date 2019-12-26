@@ -23,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
-        <activity android:name=".FavoriteActivity" ></activity>
+        <activity android:name=".HistoryActivity" ></activity>
         <activity android:name=".SettingsActivity" />
         <activity android:name=".Register.RegisterActivity" ></activity>
         <activity android:name=".MapsActivity"></activity>

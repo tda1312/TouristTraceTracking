@@ -3,8 +3,6 @@ package vn.edu.usth.touristtracetracking;
 
 import android.content.Intent;
 
-import android.graphics.drawable.Drawable;
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -98,7 +96,7 @@ public class TapBarFragment extends Fragment {
                 break;
             case R.id.item3:
                 Log.i("TAG", "Item 3 selected");
-                Intent FavoriteIntent = new Intent(getActivity(), FavoriteActivity.class);
+                Intent FavoriteIntent = new Intent(getActivity(), HistoryActivity.class);
                 FavoriteIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(FavoriteIntent);
                 break;
