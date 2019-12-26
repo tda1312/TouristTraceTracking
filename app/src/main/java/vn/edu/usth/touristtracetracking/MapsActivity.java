@@ -285,7 +285,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
             case R.id.item3:
                 Log.i("TAG", "Item 3 selected");
-                Intent FavoriteIntent = new Intent(MapsActivity.this, FavoriteActivity.class);
+                Intent FavoriteIntent = new Intent(MapsActivity.this, HistoryActivity.class);
                 startActivity(FavoriteIntent);
                 break;
             case R.id.item4:
