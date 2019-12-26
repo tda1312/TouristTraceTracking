@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserProfileActivity"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    tools:context=".UserProfileActivity">
 
 
     <ImageView
@@ -25,56 +25,55 @@
     </ImageView>
 
 
-
     <androidx.constraintlayout.widget.Guideline
 
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1"/>
+        app:layout_constraintGuide_percent="0.1" />
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/Image"
-            android:layout_marginTop="220dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
+        app:layout_constraintBottom_toTopOf="@id/Profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backgroud_ava">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:focusableInTouchMode="true"
+            android:src="@drawable/ava"
+            app:civ_border_color="#ffffff"
+            app:civ_border_width="1dp"
+            app:layout_constraintBottom_toTopOf="@id/change_ava"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/backgroud_ava"
-            app:layout_constraintBottom_toTopOf="@id/Profile">
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/change_ava"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Change your Image"
+            android:textColor="@color/gradStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_image">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:focusableInTouchMode="true"
-                android:src="@drawable/ava"
-                app:civ_border_color="#ffffff"
-                app:civ_border_width="1dp"
-                app:layout_constraintBottom_toTopOf="@id/change_ava"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        </TextView>
 
-            <TextView
-                android:id="@+id/change_ava"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Change your Image"
-                android:textColor="@color/gradStart"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profile_image">
-
-            </TextView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Profile"
@@ -129,6 +128,7 @@
                             android:textSize="15dp" />
 
                         <EditText
+                            android:id="@+id/fName"
                             android:layout_width="279dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="50dp"
@@ -137,7 +137,6 @@
                             android:inputType="text"
                             android:lines="1"
                             android:padding="12dip"
-                            android:text="Truong"
                             android:textColor="#000000"
                             android:textSize="15dp" />
                     </TableRow>
@@ -170,6 +169,7 @@
                             android:textSize="15dp" />
 
                         <EditText
+                            android:id="@+id/lName"
                             android:layout_width="277dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="50dp"
@@ -178,7 +178,6 @@
                             android:inputType="text"
                             android:lines="1"
                             android:padding="12dp"
-                            android:text="Thi Vu"
 
                             android:textColor="#000000"
                             android:textSize="15dp" />
@@ -221,15 +220,15 @@
                             android:textSize="15dp" />
 
                         <com.santalu.maskedittext.MaskEditText
+                            android:id="@+id/birthday"
                             android:layout_width="277dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="50dp"
-                            android:gravity="left"
 
+                            android:gravity="left"
                             android:hint="Date of birth"
                             android:lines="1"
                             android:padding="12dip"
-                            android:text="20/10/1999"
                             android:textColor="#000000"
                             android:textSize="15dp"
                             app:met_mask="##/##/####" />
@@ -261,14 +260,14 @@
                             android:textSize="15dp" />
 
                         <EditText
+                            android:id="@+id/phone"
                             android:layout_width="279dp"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginRight="50dp"
 
+                            android:layout_marginRight="50dp"
                             android:gravity="left"
                             android:hint="Your Phone"
                             android:lines="1"
-
                             android:padding="12dip"
                             android:text=""
                             android:textColor="#000000"
@@ -302,16 +301,16 @@
 
                         <EditText
 
+                            android:id="@+id/nationality"
                             android:layout_width="277dp"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginRight="50dp"
 
+                            android:layout_marginRight="50dp"
                             android:gravity="left"
                             android:hint="Your Nationality"
                             android:inputType="text"
                             android:lines="1"
                             android:padding="12dip"
-                            android:text="Viet Nam"
                             android:textColor="#000000"
                             android:textSize="15dp" />
                     </TableRow>
@@ -341,6 +340,7 @@
                             android:textSize="15dp" />
 
                         <EditText
+                            android:id="@+id/email"
                             android:layout_width="273dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="50dp"
@@ -349,7 +349,6 @@
                             android:inputType="textEmailAddress"
                             android:lines="1"
                             android:padding="12dip"
-                            android:text=""
 
                             android:textColor="#000000"
                             android:textSize="15dp" />
@@ -383,16 +382,16 @@
                             android:textSize="15dp" />
 
                         <EditText
+                            android:id="@+id/country"
                             android:layout_width="282dp"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginRight="50dp"
 
+                            android:layout_marginRight="50dp"
                             android:gravity="left"
                             android:hint="Your Country:"
                             android:inputType="text"
                             android:lines="1"
                             android:padding="12dip"
-                            android:text="Viet Nam"
 
                             android:textColor="#000000"
                             android:textSize="15dp" />
@@ -425,25 +424,23 @@
                             android:textSize="15dp" />
 
                         <EditText
+                            android:id="@+id/city"
                             android:layout_width="273dp"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginRight="50dp"
 
+                            android:layout_marginRight="50dp"
                             android:gravity="left"
                             android:hint="Your City"
                             android:inputType="text"
                             android:lines="1"
-                            android:padding="12dip"
 
-                            android:text="Ha Noi"
+                            android:padding="12dip"
                             android:textColor="#000000"
                             android:textSize="15dp" />
                     </TableRow>
 
 
                 </TableLayout>
-
-
 
 
             </LinearLayout>
@@ -453,17 +450,15 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <fragment
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/Profile"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:name="vn.edu.usth.touristtracetracking.TapBarFragment"
         android:id="@+id/tapBarFragment"
+        android:name="vn.edu.usth.touristtracetracking.TapBarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:visibility="gone"
-        >
-    </fragment>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Profile"
+        app:layout_constraintTop_toTopOf="parent"></fragment>
 
     <Button
         android:id="@+id/bt_save"
@@ -473,10 +468,10 @@
         android:text="Save"
         android:textColor="#000000"
         android:textSize="18dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteY="0dp">
 
     </Button>

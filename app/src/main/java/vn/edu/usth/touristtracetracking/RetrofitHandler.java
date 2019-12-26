@@ -12,7 +12,6 @@ public class RetrofitHandler {
     private RetrofitHandler() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
