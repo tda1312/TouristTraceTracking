@@ -1,4 +1,4 @@
-package vn.edu.usth.touristtracetracking;
+package vn.edu.usth.touristtracetracking.Login;
 
 public class LoginData {
     private String username;

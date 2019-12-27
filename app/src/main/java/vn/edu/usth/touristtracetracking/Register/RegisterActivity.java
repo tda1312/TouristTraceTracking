@@ -16,7 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import vn.edu.usth.touristtracetracking.LoginActivity;
+import vn.edu.usth.touristtracetracking.Login.LoginActivity;
 import vn.edu.usth.touristtracetracking.R;
 import vn.edu.usth.touristtracetracking.RetrofitHandler;
 

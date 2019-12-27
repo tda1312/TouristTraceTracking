@@ -1,4 +1,4 @@
-package vn.edu.usth.touristtracetracking;
+package vn.edu.usth.touristtracetracking.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +20,11 @@ import java.util.Calendar;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import vn.edu.usth.touristtracetracking.MapsActivity;
+import vn.edu.usth.touristtracetracking.R;
 import vn.edu.usth.touristtracetracking.Register.RegisterActivity;
+import vn.edu.usth.touristtracetracking.RetrofitHandler;
+import vn.edu.usth.touristtracetracking.User;
 import vn.edu.usth.touristtracetracking.storage.SharePrefManager;
 
 
@@ -76,6 +80,8 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+                SharePrefManager sharePrefInstance = SharePrefManager.getInstance(LoginActivity.this);
+
                 // call request to the server
                 Call<LoginResponse> call = RetrofitHandler
                         .getInstance()
@@ -90,16 +96,13 @@ public class LoginActivity extends AppCompatActivity {
                         if (loginResponse != null && loginResponse.isSuccess()) {
                             Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
                             User current_user = loginResponse.getUser();
-                            Log.i("ABCDE", current_user.getBirthday() + "hehe");
-
-
-//                            User newUser = new User(12, "phuongminh here", "dinh", "23/03/99", "hehe","hehe","hehe","hehe","hehe");
+                            String token = loginResponse.getToken();
+                            Log.i("ABCDE", "hehe " + token );
                             // save user
-                            SharePrefManager.getInstance(LoginActivity.this)
-                                    .saveUser(current_user);
-
-
-
+//                            SharePrefManager.getInstance(LoginActivity.this)
+//                                    .saveUser(current_user);
+                            sharePrefInstance.saveUser(current_user);
+                            sharePrefInstance.saveToken(token);
 
                             // open map
                             Intent intent = new Intent(LoginActivity.this, MapsActivity.class);

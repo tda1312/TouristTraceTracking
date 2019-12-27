@@ -1,15 +1,15 @@
-package vn.edu.usth.touristtracetracking;
+package vn.edu.usth.touristtracetracking.Update;
 
-public class LoginResponse {
+import vn.edu.usth.touristtracetracking.User;
+
+public class UpdateResponse {
     private boolean success;
     private String message;
-    private String token;
     private User user;
 
-    public LoginResponse(boolean success, String message, String token, User user) {
+    public UpdateResponse(boolean success, String message, User user) {
         this.success = success;
         this.message = message;
-        this.token = token;
         this.user = user;
     }
 
@@ -27,14 +27,6 @@ public class LoginResponse {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public User getUser() {

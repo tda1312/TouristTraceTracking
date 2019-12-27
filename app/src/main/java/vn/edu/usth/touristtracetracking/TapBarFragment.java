@@ -15,6 +15,8 @@ import android.widget.ImageView;
 
 import com.michaldrabik.tapbarmenulib.TapBarMenu;
 
+import vn.edu.usth.touristtracetracking.Update.UserProfileActivity;
+
 
 /**
  * A simple {@link Fragment} subclass.

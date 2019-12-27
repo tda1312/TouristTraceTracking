@@ -27,7 +27,6 @@ public class SharePrefManager {
     public void saveUser(User user) {
         SharedPreferences sharedPreferences = mContext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        Log.i("ABCDE", user.getFirstName() + " from saveUser()");
 
         editor.putInt("id", user.getId());
         editor.putString("firstName", user.getFirstName());
@@ -64,8 +63,6 @@ public class SharePrefManager {
                 sharedPreferences.getString("email", null),
                 sharedPreferences.getString("phone", null)
         );
-
-        Log.i("ABCDE", user.getFirstName() + " from getUser()");
         return user;
     }
 
@@ -75,5 +72,20 @@ public class SharePrefManager {
 
         editor.clear();
         editor.apply();
+    }
+
+    public void saveToken(String token) {
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        Log.i("ABCDE", "hello token from saveToken()" + token);
+        editor.putString("token", token);
+        editor.apply();
+    }
+
+    public String getToken() {
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        String token = sharedPreferences.getString("token", null);
+        return token;
     }
 }
