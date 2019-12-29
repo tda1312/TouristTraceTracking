@@ -32,11 +32,11 @@ public class SharePrefManager {
         editor.putString("firstName", user.getFirstName());
         editor.putString("lastName", user.getLastName());
         editor.putString("birthday", user.getBirthday());
-        editor.putString("city", user.getCity());
-        editor.putString("country", user.getCountry());
+        editor.putString("phone", user.getPhone());
         editor.putString("nationality", user.getNationality());
         editor.putString("email", user.getEmail());
-        editor.putString("phone", user.getPhone());
+        editor.putString("country", user.getCountry());
+        editor.putString("city", user.getCity());
 
         editor.apply();
     }
@@ -57,11 +57,11 @@ public class SharePrefManager {
                 sharedPreferences.getString("firstName", null),
                 sharedPreferences.getString("lastName", null),
                 sharedPreferences.getString("birthday", null),
-                sharedPreferences.getString("city", null),
-                sharedPreferences.getString("country", null),
+                sharedPreferences.getString("phone", null),
                 sharedPreferences.getString("nationality", null),
                 sharedPreferences.getString("email", null),
-                sharedPreferences.getString("phone", null)
+                sharedPreferences.getString("country", null),
+                sharedPreferences.getString("city", null)
         );
         return user;
     }

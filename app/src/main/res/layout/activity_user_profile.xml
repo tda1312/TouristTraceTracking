@@ -9,7 +9,6 @@
 
 
     <ImageView
-
         android:id="@+id/backgroud_ava"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
@@ -20,19 +19,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
-
-
     </ImageView>
 
 
     <androidx.constraintlayout.widget.Guideline
-
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.1" />
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Image"
@@ -43,7 +38,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/backgroud_ava">
-
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
@@ -70,7 +64,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profile_image">
-
         </TextView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -78,7 +71,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Profile"
         android:layout_width="wrap_content"
-        android:layout_height="294dp"
+        android:layout_height="350dp"
         android:layout_marginTop="30dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +79,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Image"
         app:layout_constraintVertical_bias="0.0">
-
 
         <ScrollView
             android:layout_width="wrap_content"
@@ -140,7 +132,6 @@
                 </TableLayout>
 
                 <TableLayout
-
                     android:id="@+id/txt_lastname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -216,10 +207,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginEnd="0dp"
                     android:layout_marginBottom="10dp"
-                    android:textColorHint="#000000"
-
-
-                    >
+                    android:textColorHint="#000000">
 
                     <TableRow>
 
@@ -246,7 +234,6 @@
                             android:textSize="15dp" />
                     </TableRow>
 
-
                 </TableLayout>
 
                 <TableLayout
@@ -256,9 +243,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginEnd="0dp"
                     android:layout_marginBottom="10dp"
-                    android:textColorHint="#000000"
-
-                    >
+                    android:textColorHint="#000000">
 
                     <TableRow>
 
@@ -415,7 +400,7 @@
         android:id="@+id/bt_save"
         android:layout_width="wrap_content"
         android:layout_height="41dp"
-        android:layout_marginTop="740dp"
+        android:layout_marginTop="800dp"
         android:background="@drawable/bg_button_green"
         android:text="Save"
         android:textColor="#000000"
