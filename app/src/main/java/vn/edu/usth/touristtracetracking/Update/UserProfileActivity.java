@@ -31,7 +31,6 @@ public class UserProfileActivity extends AppCompatActivity {
     TextView txt_change_ava;
     CircleImageView circleImageView;
     EditText etFName, etLName, etBirthday, etPhone, etNationality, etEmail, etCountry, etCity;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -113,6 +112,8 @@ public class UserProfileActivity extends AppCompatActivity {
         });
     }
 
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
@@ -130,6 +131,7 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         }
     }
+
 }
 
 
