@@ -3,8 +3,10 @@ package vn.edu.usth.touristtracetracking;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -35,12 +37,13 @@ public class HistoryActivity extends FragmentActivity implements OnMapReadyCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_history);
         mapFragment.getMapAsync(this);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
     }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -133,5 +136,8 @@ public class HistoryActivity extends FragmentActivity implements OnMapReadyCallb
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 500);
         mMap.moveCamera(cameraUpdate);
         mMap.addPolyline(line);
+
     }
+
+
 }

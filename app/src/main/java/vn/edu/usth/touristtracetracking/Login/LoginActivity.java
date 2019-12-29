@@ -33,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     LinearLayout linearLayout;
     TextView txbyTime;
     Handler handler = new Handler();
+    private static final int TIME_INTERVAL = 2000;
+    private long mBackPressed;
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -143,7 +145,20 @@ public class LoginActivity extends AppCompatActivity {
 
             txbyTime.setText("Good Night");
         }
+
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+    }
+    @Override
+    public void onBackPressed()
+    {
+        if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis())
+        {
+            super.onBackPressed();
+            return;
+        }
+        else { Toast.makeText(getBaseContext(), "Tap back button in order to exit", Toast.LENGTH_SHORT).show(); }
+
+        mBackPressed = System.currentTimeMillis();
     }
 
 //    @Override
