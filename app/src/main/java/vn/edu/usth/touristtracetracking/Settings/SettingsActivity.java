@@ -1,4 +1,4 @@
-package vn.edu.usth.touristtracetracking;
+package vn.edu.usth.touristtracetracking.Settings;
 
 import androidx.fragment.app.Fragment;
 
@@ -19,6 +19,8 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.WindowManager;
+
+import vn.edu.usth.touristtracetracking.R;
 
 public class SettingsActivity extends AppCompatActivity {
 

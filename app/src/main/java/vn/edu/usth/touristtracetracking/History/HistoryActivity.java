@@ -1,4 +1,4 @@
-package vn.edu.usth.touristtracetracking;
+package vn.edu.usth.touristtracetracking.History;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
@@ -23,6 +23,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import vn.edu.usth.touristtracetracking.R;
 
 public class HistoryActivity extends FragmentActivity implements OnMapReadyCallback {
 
