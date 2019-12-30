@@ -1,3 +1,7 @@
+# Tourist Trace Tracking sub-repos:
+#### Backend API: https://github.com/phuongminh2303/TouristTraceAPI
+#### Web repo: https://github.com/praise2112/TouristTraceTrackingWeb
+
 # Tourist Trace Tracking git guide:
 
 ## What you need to do ONE TIME:
