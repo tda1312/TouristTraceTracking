@@ -161,13 +161,13 @@ public class LoginActivity extends AppCompatActivity {
         mBackPressed = System.currentTimeMillis();
     }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        if(SharePrefManager.getInstance(this).isLoggedIn()) {
-//            Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//            startActivity(intent);
-//        }
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(SharePrefManager.getInstance(this).isLoggedIn()) {
+            Intent intent = new Intent(LoginActivity.this, MapsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+    }
 }
