@@ -1,5 +1,6 @@
 package vn.edu.usth.touristtracetracking.Foreground_service;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -393,7 +394,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     REQUEST_LOCATION_PERMISSION);
-            recreate();
         }
 
 
@@ -412,5 +412,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
         }*/
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(getApplicationContext(), "YAYYYYY", Toast.LENGTH_SHORT).show();
+            recreate();
+        } else {
+            Toast.makeText(getApplicationContext(),"NAYYYY", Toast.LENGTH_SHORT).show();
+        }
     }
 }
