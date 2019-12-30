@@ -42,4 +42,8 @@
     <string name="tittle_select_theme">Select theme</string>
     <string name="text_change_theme_light">Light</string>
     <string name="text_change_theme_dark">Dark</string>
+    <string name="your_nationality">Your Nationality</string>
+    <string name="nationality">Nationality</string>
+    <string name="todo">TODO</string>
+    <string name="change_your_image">Change your Image</string>
 </resources>

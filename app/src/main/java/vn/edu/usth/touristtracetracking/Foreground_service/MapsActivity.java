@@ -1,5 +1,6 @@
 package vn.edu.usth.touristtracetracking.Foreground_service;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
@@ -15,6 +16,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -56,7 +58,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final int REQUEST_LOCATION_PERMISSION = 1;
     LocationManager locationManager;
     Marker marker;
-    boolean camaraSet = false;
+    boolean cameraSet = false;
 
     // Background service variables
     MyBackgroundService mService = null;
@@ -81,6 +83,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     //Tap Bar Menu
     // TapBarMenu tapBarMenu;
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -184,10 +187,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                     position(latLng).
                                     title(result)
                                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-                            if(camaraSet == false) {
+                            if(!cameraSet) {
                                 mMap.setMaxZoomPreference(20);
                                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
-                                camaraSet = true;
+                                cameraSet = true;
                             }
 
                         }
@@ -245,10 +248,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
                         } else {
                             marker = mMap.addMarker(new MarkerOptions().position(latLng).title(result).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-                            if(!camaraSet) {
+                            if(!cameraSet) {
                                 mMap.setMaxZoomPreference(20);
                                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
-                                camaraSet = true;
+                                cameraSet = true;
                             }
                         }
                     } catch (IOException e) {
@@ -296,7 +299,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void run() {
                 mService.requestLocationUpdates();
             }
-        }, 2000);
+        }, 5000);
     }
 
     @Override
@@ -318,11 +321,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onListenLocation(SendLocationToActivity event) {
         if (event != null){
-            String data = new StringBuilder()
-                    .append(event.getLocation().getLatitude())
-                    .append("; ")
-                    .append(event.getLocation().getLongitude())
-                    .toString();
+            String data = event.getLocation().getLatitude() +
+                    "; " +
+                    event.getLocation().getLongitude();
             latitude = event.getLocation().getLatitude();
             longitude = event.getLocation().getLongitude();
             Toast.makeText(mService, "Your current location:\n" + data, Toast.LENGTH_SHORT).show();
@@ -352,9 +353,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         FAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(latLng != null){
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
-                }
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
             }
         });
     }
@@ -394,9 +393,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     REQUEST_LOCATION_PERMISSION);
-
-            return;
+            recreate();
         }
+
+
 
         // If first time open, zoom in then allow user to move around while updating the markers
         /*if (firstTime) {
