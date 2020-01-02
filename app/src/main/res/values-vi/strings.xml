@@ -23,4 +23,22 @@
     <string name="tittle_select_theme">Chọn chủ đề</string>
     <string name="text_change_theme_dark">Tối</string>
     <string name="text_change_theme_light">Sáng</string>
+    <string name="fist_name">Họ </string>
+    <string name="last_name">Tên</string>
+    <string name="date_of_birth">Ngày sinh</string>
+    <string name="phone">Số điện thoại</string>
+    <string name="nationality">Quốc tịch</string>
+    <string name="email">Địa chỉ Email</string>
+    <string name="country">Quê quán</string>
+    <string name="city">Thành phố</string>
+    <string name="country_edt">Quê quán</string>
+    <string name="fist_name_edt">Họ</string>
+    <string name="last_name_edt">Tên</string>
+    <string name="date_of_birth_edt">nnnn/tt/nn</string>
+    <string name="phone_edt">Số điện thoại</string>
+    <string name="email_edt">Địa chỉ Email</string>
+    <string name="nationality_edt">Quốc tịch</string>
+    <string name="city_edt">Thành phố</string>
+    <string name="password">Mật Khẩu</string>
+
 </resources>

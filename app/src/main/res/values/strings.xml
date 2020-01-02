@@ -42,8 +42,23 @@
     <string name="tittle_select_theme">Select theme</string>
     <string name="text_change_theme_light">Light</string>
     <string name="text_change_theme_dark">Dark</string>
-    <string name="your_nationality">Your Nationality</string>
+    <string name="fist_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="phone">Phone</string>
     <string name="nationality">Nationality</string>
-    <string name="todo">TODO</string>
-    <string name="change_your_image">Change your Image</string>
+    <string name="email">Email</string>
+    <string name="country">Country</string>
+    <string name="city">City</string>
+    <string name="country_edt">Your Country</string>
+    <string name="fist_name_edt">Your First Name</string>
+    <string name="last_name_edt">Your Last Name</string>
+    <string name="date_of_birth_edt">yyyy/mm/dd</string>
+    <string name="phone_edt">Your Phone Number</string>
+    <string name="email_edt">Your Email Address</string>
+    <string name="nationality_edt">Your Nationality</string>
+    <string name="city_edt">Your City</string>
+    <string name="password">Your Password</string>
+
+
 </resources>

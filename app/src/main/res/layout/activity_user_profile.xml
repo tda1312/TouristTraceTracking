@@ -11,15 +11,14 @@
     <ImageView
         android:id="@+id/backgroud_ava"
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:background="@drawable/goodmorning"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:contentDescription="@string/todo">
+        app:layout_constraintVertical_bias="0.0">
     </ImageView>
 
 
@@ -28,13 +27,13 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="290dp"
+        android:layout_marginTop="300dp"
         app:layout_constraintBottom_toTopOf="@id/Profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +50,7 @@
             app:layout_constraintBottom_toTopOf="@id/change_ava"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
+            android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/change_your_image"
+            android:text="Change your Image"
             android:textColor="@color/gradStart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -91,14 +91,15 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintVertical_bias="0.0">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TableLayout
+
+                <TableRow
                     android:id="@+id/txt_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -107,33 +108,29 @@
                     android:layout_marginBottom="15dp"
                     android:textColorHint="#000000">
 
-                    <TableRow>
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_marginStart="10dp"
+                        android:padding="10dip"
+                        android:text="@string/fist_name"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
 
-                        <TextView
-                            android:layout_width="120dp"
-                            android:layout_marginStart="10dp"
-                            android:padding="10dip"
-                            android:text=" First Name"
-                            android:textColor="#000000"
-                            android:textSize="15dp" />
+                    <EditText
+                        android:id="@+id/fName"
+                        android:layout_width="279dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:hint="@string/fist_name_edt"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:padding="12dip"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+                </TableRow>
 
-                        <EditText
-                            android:id="@+id/fName"
-                            android:layout_width="279dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="50dp"
-                            android:gravity="left"
-                            android:hint="Your First Name"
-                            android:inputType="text"
-                            android:lines="1"
-                            android:padding="12dip"
-                            android:textColor="#000000"
-                            android:textSize="15dp" />
-                    </TableRow>
-                </TableLayout>
 
-                <TableLayout
-                    android:id="@+id/txt_lastname"
+                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
@@ -142,33 +139,30 @@
                     android:layout_marginBottom="10dp"
                     android:textColorHint="#000000">
 
-                    <TableRow>
 
-                        <TextView
-                            android:layout_width="120dp"
-                            android:layout_marginStart="10dp"
-                            android:padding="10dip"
-                            android:text=" Last Name "
-                            android:textColor="#000000"
-                            android:textSize="15dp" />
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_marginStart="10dp"
+                        android:padding="10dip"
+                        android:text="@string/last_name"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
 
-                        <EditText
-                            android:id="@+id/lName"
-                            android:layout_width="277dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="50dp"
-                            android:gravity="left"
-                            android:hint="Your Last Name"
-                            android:inputType="text"
-                            android:lines="1"
-                            android:padding="12dp"
-                            android:textColor="#000000"
-                            android:textSize="15dp" />
-                    </TableRow>
-                </TableLayout>
+                    <EditText
+                        android:id="@+id/lName"
+                        android:layout_width="277dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:hint="@string/last_name_edt"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:padding="12dp"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+                </TableRow>
 
-                <TableLayout
-                    android:id="@+id/txt_date_of_birth"
+
+                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
@@ -176,33 +170,29 @@
                     android:layout_marginBottom="10dp"
                     android:textColorHint="#000000">
 
-                    <TableRow>
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_marginStart="10dp"
+                        android:padding="10dip"
+                        android:text="@string/date_of_birth"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
 
-                        <TextView
-                            android:layout_width="120dp"
-                            android:layout_marginStart="10dp"
-                            android:padding="10dip"
-                            android:text=" Date of birth "
-                            android:textColor="#000000"
-                            android:textSize="15dp" />
+                    <com.santalu.maskedittext.MaskEditText
+                        android:id="@+id/birthday"
+                        android:layout_width="277dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:hint="@string/date_of_birth_edt"
+                        android:lines="1"
+                        android:padding="12dip"
+                        android:textColor="#000000"
+                        android:textSize="15sp"
+                        app:met_mask="####/##/##" />
+                </TableRow>
 
-                        <com.santalu.maskedittext.MaskEditText
-                            android:id="@+id/birthday"
-                            android:layout_width="277dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="50dp"
-                            android:gravity="left"
-                            android:hint="####/##/##"
-                            android:lines="1"
-                            android:padding="12dip"
-                            android:textColor="#000000"
-                            android:textSize="15dp"
-                            app:met_mask="####/##/##" />
-                    </TableRow>
-                </TableLayout>
 
-                <TableLayout
-                    android:id="@+id/txt_email2"
+                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
@@ -210,35 +200,33 @@
                     android:layout_marginBottom="10dp"
                     android:textColorHint="#000000">
 
-                    <TableRow>
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_marginStart="10dp"
+                        android:padding="10dip"
+                        android:text="@string/phone"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
 
-                        <TextView
-                            android:layout_width="120dp"
-                            android:layout_marginStart="10dp"
-                            android:inputType="number"
-                            android:padding="10dip"
-                            android:text=" Phone"
-                            android:textColor="#000000"
-                            android:textSize="15dp" />
+                    <EditText
+                        android:id="@+id/phone"
+                        android:layout_width="279dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:autofillHints="@string/phone"
+                        android:gravity="start"
+                        android:hint="@string/phone_edt"
+                        android:lines="1"
+                        android:inputType="phone"
+                        android:padding="12dip"
+                        android:text=""
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+                </TableRow>
 
-                        <EditText
-                            android:id="@+id/phone"
-                            android:layout_width="279dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="50dp"
-                            android:gravity="left"
-                            android:hint="Your Phone"
-                            android:lines="1"
-                            android:padding="12dip"
-                            android:text=""
-                            android:textColor="#000000"
-                            android:textSize="15dp" />
-                    </TableRow>
 
-                </TableLayout>
+                <TableRow
 
-                <TableLayout
-                    android:id="@+id/txt_nationality"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
@@ -246,36 +234,31 @@
                     android:layout_marginBottom="10dp"
                     android:textColorHint="#000000">
 
-                    <TableRow>
 
-                        <TextView
-                            android:layout_width="120dp"
-                            android:layout_marginStart="10dp"
-                            android:padding="10dip"
-                            android:text="@string/nationality"
-                            android:textColor="#000000"
-                            android:textSize="15sp" />
-
-                        <EditText
-
-                            android:id="@+id/nationality"
-                            android:layout_width="277dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="50dp"
-                            android:gravity="left"
-                            android:hint="@string/your_nationality"
-                            android:inputType="text"
-                            android:lines="1"
-                            android:padding="12dip"
-                            android:textColor="#000000"
-                            android:textSize="15sp"
-                            tools:ignore="RtlHardcoded" />
-                    </TableRow>
-                </TableLayout>
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_marginStart="10dp"
+                        android:padding="10dip"
+                        android:text="@string/email"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
 
 
-                <TableLayout
-                    android:id="@+id/txt_email1"
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="273dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:hint="@string/email_edt"
+                        android:inputType="textEmailAddress"
+                        android:lines="1"
+                        android:padding="12dip"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+                </TableRow>
+
+
+                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
@@ -283,35 +266,30 @@
                     android:layout_marginBottom="10dp"
                     android:textColorHint="#000000">
 
-                    <TableRow>
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_marginStart="10dp"
+                        android:padding="10dip"
+                        android:text="@string/nationality"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
 
-                        <TextView
-                            android:layout_width="120dp"
-                            android:layout_marginStart="10dp"
-                            android:padding="10dip"
-                            android:text=" Email"
-                            android:textColor="#000000"
-                            android:textSize="15dp" />
+                    <EditText
 
-                        <EditText
-                            android:id="@+id/email"
-                            android:layout_width="273dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="50dp"
-                            android:gravity="left"
-                            android:hint="Your Email"
-                            android:inputType="textEmailAddress"
-                            android:lines="1"
-                            android:padding="12dip"
-                            android:textColor="#000000"
-                            android:textSize="15dp" />
-                    </TableRow>
+                        android:id="@+id/nationality"
+                        android:layout_width="304dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:gravity="start"
+                        android:hint="@string/nationality_edt"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:padding="12dip"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+                </TableRow>
 
-
-                </TableLayout>
-
-                <TableLayout
-                    android:id="@+id/txt_email3"
+                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
@@ -320,35 +298,29 @@
                     android:layout_marginBottom="15dp"
                     android:textColorHint="#000000">
 
-                    <TableRow>
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_marginStart="10dp"
+                        android:padding="10dip"
+                        android:text="@string/country"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
 
-                        <TextView
-                            android:layout_width="120dp"
-                            android:layout_marginStart="10dp"
-                            android:padding="10dip"
-                            android:text=" Country"
-                            android:textColor="#000000"
-                            android:textSize="15dp" />
-
-                        <EditText
-                            android:id="@+id/country"
-                            android:layout_width="282dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="50dp"
-                            android:gravity="left"
-                            android:hint="Your Country:"
-                            android:inputType="text"
-                            android:lines="1"
-                            android:padding="12dip"
-                            android:textColor="#000000"
-                            android:textSize="15dp" />
-                    </TableRow>
+                    <EditText
+                        android:id="@+id/country"
+                        android:layout_width="282dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:hint="@string/country_edt"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:padding="12dip"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+                </TableRow>
 
 
-                </TableLayout>
-
-                <TableLayout
-                    android:id="@+id/txt_email4"
+                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
@@ -357,30 +329,26 @@
                     android:layout_marginBottom="15dp"
                     android:textColorHint="#000000">
 
-                    <TableRow>
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_marginStart="10dp"
+                        android:padding="10dip"
+                        android:text="@string/city"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
 
-                        <TextView
-                            android:layout_width="120dp"
-                            android:layout_marginStart="10dp"
-                            android:padding="10dip"
-                            android:text=" City "
-                            android:textColor="#000000"
-                            android:textSize="15dp" />
-
-                        <EditText
-                            android:id="@+id/city"
-                            android:layout_width="273dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="50dp"
-                            android:gravity="left"
-                            android:hint="Your City"
-                            android:inputType="text"
-                            android:lines="1"
-                            android:padding="12dip"
-                            android:textColor="#000000"
-                            android:textSize="15dp" />
-                    </TableRow>
-                </TableLayout>
+                    <EditText
+                        android:id="@+id/city"
+                        android:layout_width="273dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:hint="@string/city_edt"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:padding="12dip"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+                </TableRow>
             </LinearLayout>
         </ScrollView>
 
@@ -393,10 +361,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Profile"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/Profile"></fragment>
 
     <Button
         android:id="@+id/bt_save"
@@ -406,13 +374,13 @@
         android:background="@drawable/bg_button_green"
         android:text="Save"
         android:textColor="#000000"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/Profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Profile"
-        app:layout_constraintVertical_bias="0.686">
+        app:layout_constraintVertical_bias="0.664">
 
     </Button>
 
