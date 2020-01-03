@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitHandler {
-    private static final String BASE_URL = "http://34.87.80.154:443";
+    private static final String BASE_URL = "http://34.87.80.154:443/";
     private static RetrofitHandler mInstance;
     private Retrofit retrofit;
 
