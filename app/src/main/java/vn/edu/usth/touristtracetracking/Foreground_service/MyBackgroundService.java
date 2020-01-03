@@ -17,6 +17,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,18 @@ import com.google.android.gms.tasks.Task;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import vn.edu.usth.touristtracetracking.R;
+import vn.edu.usth.touristtracetracking.RetrofitHandler;
+import vn.edu.usth.touristtracetracking.SendHistoryResponse;
+import vn.edu.usth.touristtracetracking.User;
+import vn.edu.usth.touristtracetracking.storage.SharePrefManager;
 
 public class MyBackgroundService extends Service {
     private static final String CHANNEL_ID = "my_channel";
@@ -140,12 +152,54 @@ public class MyBackgroundService extends Service {
 
     private void onNewLocation(Location lastLocation) {
         mLocation = lastLocation;
-        EventBus.getDefault().postSticky(new SendLocationToActivity(mLocation));
+        SimpleDateFormat datetime = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
+        String arrival_time = datetime.format(mLocation.getTime());
+        LocationData newLocation = new LocationData(Double.toString(mLocation.getLatitude()),
+                Double.toString(mLocation.getLongitude()), arrival_time, "");
+
+        // send to other activity with Event Bus
+        EventBus.getDefault().postSticky(newLocation);
+
+
+
+        List<LocationData> historyList = new ArrayList<LocationData>();
+        historyList.add(new LocationData("0.0", "0.0", "2019-12-17 00:04:50", "2019-12-17 00:05:50"));
+        historyList.add(new LocationData("1.0", "1.0", "2019-12-17 00:04:50", "2019-12-17 00:05:50"));
+
+
+        //WIP
+        sendHistory(historyList);
 
         // Update notification content if running in foreground service
         if(serviceRunningInForeground(this)) {
             mNotificationManager.notify(NOTIFICATION_ID, getNotification());
         }
+    }
+
+    private void sendHistory(List<LocationData> historyList){
+        SharePrefManager sharePrefManager = SharePrefManager.getInstance(MyBackgroundService.this);
+        User user = sharePrefManager.getUser();
+//        ArrayListHistory newHistory = new ArrayListHistory(historyList);
+
+
+        Call<SendHistoryResponse> call = RetrofitHandler.getInstance()
+                .getApi().addHistory(user.getId(), sharePrefManager.getToken(), historyList);
+
+        call.enqueue(new Callback<SendHistoryResponse>() {
+            @Override
+            public void onResponse(Call<SendHistoryResponse> call, Response<SendHistoryResponse> response) {
+                if(response.body() != null && response.body().isSuccess()) {
+                    Log.i("ABCDE", response.code() + "hehe");
+                } else {
+                    Log.i("ABCDE", response.body().isSuccess() + " yahoooooooo! " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SendHistoryResponse> call, Throwable t) {
+                Log.i("ABCDE", t.getMessage());
+            }
+        });
     }
 
     private Notification getNotification() {

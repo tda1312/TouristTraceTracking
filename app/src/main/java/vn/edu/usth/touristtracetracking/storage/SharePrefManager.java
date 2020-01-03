@@ -78,7 +78,6 @@ public class SharePrefManager {
         SharedPreferences sharedPreferences = mContext.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        Log.i("ABCDE", "hello token from saveToken()" + token);
         editor.putString("token", token);
         editor.apply();
     }

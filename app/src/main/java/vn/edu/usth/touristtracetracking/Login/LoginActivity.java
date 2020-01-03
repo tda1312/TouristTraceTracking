@@ -99,7 +99,6 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
                             User current_user = loginResponse.getUser();
                             String token = loginResponse.getToken();
-                            Log.i("ABCDE", "hehe " + token );
                             // save user
 //                            SharePrefManager.getInstance(LoginActivity.this)
 //                                    .saveUser(current_user);

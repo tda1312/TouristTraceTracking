@@ -73,7 +73,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     // Background service variables
     MyBackgroundService mService = null;
     boolean mBound = false;
-    Double latitude, longitude;
+    String latitude, longitude;
 
     // Create instance of service connection
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -320,14 +320,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void onListenLocation(SendLocationToActivity event) {
+    public void onListenLocation(LocationData event) {
         if (event != null){
-            String data = event.getLocation().getLatitude() +
+            String data = event.getLatitude() +
                     "; " +
-                    event.getLocation().getLongitude();
-            latitude = event.getLocation().getLatitude();
-            longitude = event.getLocation().getLongitude();
-            Toast.makeText(mService, "Your current location:\n" + data, Toast.LENGTH_SHORT).show();
+                    event.getLongitude();
+            latitude = event.getLatitude();
+            longitude = event.getLongitude();
+            String arrival_time = event.getArrival_time();
+            Toast.makeText(mService, "Your current location:\n" + data + "\nat: " + arrival_time, Toast.LENGTH_SHORT).show();
         }
     }
 
