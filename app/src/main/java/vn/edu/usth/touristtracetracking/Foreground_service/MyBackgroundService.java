@@ -31,6 +31,7 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -64,6 +65,8 @@ public class MyBackgroundService extends Service {
     private LocationCallback locationCallback;
     private Handler mServiceHandler;
     private Location mLocation;
+
+    List<LocationData> historyList = new ArrayList<LocationData>();
 
     public MyBackgroundService() {
 
@@ -160,14 +163,12 @@ public class MyBackgroundService extends Service {
         // send to other activity with Event Bus
         EventBus.getDefault().postSticky(newLocation);
 
-
-
-        List<LocationData> historyList = new ArrayList<LocationData>();
+        // add new location to list
         historyList.add(new LocationData("0.0", "0.0", "2019-12-17 00:04:50", "2019-12-17 00:05:50"));
         historyList.add(new LocationData("1.0", "1.0", "2019-12-17 00:04:50", "2019-12-17 00:05:50"));
 
 
-        //WIP
+        // send the list to server
         sendHistory(historyList);
 
         // Update notification content if running in foreground service
@@ -179,11 +180,10 @@ public class MyBackgroundService extends Service {
     private void sendHistory(List<LocationData> historyList){
         SharePrefManager sharePrefManager = SharePrefManager.getInstance(MyBackgroundService.this);
         User user = sharePrefManager.getUser();
-//        ArrayListHistory newHistory = new ArrayListHistory(historyList);
-
 
         Call<SendHistoryResponse> call = RetrofitHandler.getInstance()
-                .getApi().addHistory(user.getId(), sharePrefManager.getToken(), historyList);
+                .getApi()
+                .addHistory(user.getId(),"Bearer " + sharePrefManager.getToken(), historyList);
 
         call.enqueue(new Callback<SendHistoryResponse>() {
             @Override
