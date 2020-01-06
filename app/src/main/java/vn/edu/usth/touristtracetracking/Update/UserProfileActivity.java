@@ -27,7 +27,7 @@ import vn.edu.usth.touristtracetracking.RetrofitHandler;
 import vn.edu.usth.touristtracetracking.User;
 import vn.edu.usth.touristtracetracking.storage.SharePrefManager;
 
-public class UserProfileActivity extends AppCompatActivity {
+public class UserProfileActivity extends AppCompatActivity implements View.OnClickListener{
     TextView txt_change_ava;
     CircleImageView circleImageView;
     EditText etFName, etLName, etBirthday, etPhone, etNationality, etEmail, etCountry, etCity;
@@ -44,7 +44,7 @@ public class UserProfileActivity extends AppCompatActivity {
         User user = SharePrefManager.getInstance(this).getUser();
 
         // display to user profile
-        etFName = findViewById(R.id.fName);
+        etFName = (findViewById(R.id.fName));
         etLName = findViewById(R.id.lName);
         etBirthday = findViewById(R.id.birthday);
         etPhone = findViewById(R.id.phone);
@@ -62,45 +62,10 @@ public class UserProfileActivity extends AppCompatActivity {
         etCountry.setText(user.getCountry());
         etCity.setText(user.getCity());
 
-        btsave.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String fisrtname = etFName.getText().toString().trim();
-                String lastName = etLName.getText().toString().trim();
-                String birthday = etBirthday.getText().toString().trim();
-                String phone = etPhone.getText().toString().trim();
-                String nationality = etNationality.getText().toString().trim();
-                String email = etEmail.getText().toString().trim();
-                String country = etCountry.getText().toString().trim();
-                String city = etCity.getText().toString().trim();
+        // handle update button
+        btsave.setOnClickListener(this);
 
-                // call
-                SharePrefManager sharePrefManager = SharePrefManager.getInstance(UserProfileActivity.this);
-                User user = sharePrefManager.getUser();
-                Call<UpdateResponse> call = RetrofitHandler.getInstance()
-                        .getApi().updateUser(user.getId(), "Bearer " + sharePrefManager.getToken(), new User(user.getId(), fisrtname, lastName, birthday, phone, nationality, email, country, city));
-                call.enqueue(new Callback<UpdateResponse>() {
-                    @Override
-                    public void onResponse(Call<UpdateResponse> call, Response<UpdateResponse> response) {
-                        UpdateResponse updateResponse = response.body();
-                        if (updateResponse != null && updateResponse.isSuccess()) {
-                            Toast.makeText(UserProfileActivity.this, updateResponse.getMessage(), Toast.LENGTH_LONG).show();
-                            sharePrefManager.saveUser(response.body().getUser());
-                            startActivity(new Intent(UserProfileActivity.this, MapsActivity.class).setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT));
-                        } else {
-                            Toast.makeText(UserProfileActivity.this, "No, you failed!", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<UpdateResponse> call, Throwable t) {
-                        String error = "Failed to update!";
-                        Toast.makeText(UserProfileActivity.this, error, Toast.LENGTH_LONG).show();
-                    }
-                });
-            }
-        });
-
-        // Get photo from glarry
+        // Get photo from gallery
         txt_change_ava.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +77,45 @@ public class UserProfileActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onClick(View v) {
+        // Get text from the form
+        String fisrtname = etFName.getText().toString().trim();
+        String lastName = etLName.getText().toString().trim();
+        String birthday = etBirthday.getText().toString().trim();
+        String phone = etPhone.getText().toString().trim();
+        String nationality = etNationality.getText().toString().trim();
+        String email = etEmail.getText().toString().trim();
+        String country = etCountry.getText().toString().trim();
+        String city = etCity.getText().toString().trim();
 
+        // Get SharePref
+        SharePrefManager sharePrefManager = SharePrefManager.getInstance(UserProfileActivity.this);
+        User user = sharePrefManager.getUser();
+
+        // Make and handle req + res
+        Call<UpdateResponse> call = RetrofitHandler.getInstance()
+                .getApi().updateUser(user.getId(), "Bearer " + sharePrefManager.getToken(), new User(user.getId(), fisrtname, lastName, birthday, phone, nationality, email, country, city));
+        call.enqueue(new Callback<UpdateResponse>() {
+            @Override
+            public void onResponse(Call<UpdateResponse> call, Response<UpdateResponse> response) {
+                UpdateResponse updateResponse = response.body();
+                if (updateResponse != null && updateResponse.isSuccess()) {
+                    // display result to user
+                    Toast.makeText(UserProfileActivity.this, updateResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    // save new info to shareRef
+                    sharePrefManager.saveUser(response.body().getUser());
+                } else {
+                    Toast.makeText(UserProfileActivity.this, "No, you failed!", Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<UpdateResponse> call, Throwable t) {
+                String error = "Failed to update!";
+                Toast.makeText(UserProfileActivity.this, error, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
