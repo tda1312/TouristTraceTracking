@@ -1,4 +1,4 @@
-package vn.edu.usth.touristtracetracking.Foreground_service;
+package vn.edu.usth.touristtracetracking.ForegroundService;
 
 import android.app.ActivityManager;
 import android.app.Notification;
@@ -9,7 +9,6 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Binder;
 import android.os.Build;
@@ -31,7 +30,6 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -158,18 +156,22 @@ public class MyBackgroundService extends Service {
         SimpleDateFormat datetime = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
         String arrival_time = datetime.format(mLocation.getTime());
         LocationData newLocation = new LocationData(Double.toString(mLocation.getLatitude()),
-                Double.toString(mLocation.getLongitude()), arrival_time, "");
+                Double.toString(mLocation.getLongitude()), arrival_time, " ");
 
         // send to other activity with Event Bus
         EventBus.getDefault().postSticky(newLocation);
 
         // add new location to list
-        historyList.add(new LocationData("0.0", "0.0", "2019-12-17 00:04:50", "2019-12-17 00:05:50"));
-        historyList.add(new LocationData("1.0", "1.0", "2019-12-17 00:04:50", "2019-12-17 00:05:50"));
+//        historyList.add(new LocationData("0.0", "0.0", "2019-12-17 00:04:50", "2019-12-17 00:05:50"));
+//        historyList.add(new LocationData("1.0", "1.0", "2019-12-17 00:04:50", "2019-12-17 00:05:50"));
 
+        historyList.add(newLocation);
 
         // send the list to server
-        sendHistory(historyList);
+        if(historyList.size() == 3) {
+            sendHistory(historyList);
+            historyList.clear();
+        }
 
         // Update notification content if running in foreground service
         if(serviceRunningInForeground(this)) {

@@ -10,7 +10,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
-import vn.edu.usth.touristtracetracking.Foreground_service.LocationData;
+import vn.edu.usth.touristtracetracking.ForegroundService.LocationData;
 import vn.edu.usth.touristtracetracking.History.GetHistoryResponse;
 import vn.edu.usth.touristtracetracking.Login.LoginData;
 import vn.edu.usth.touristtracetracking.Login.LoginResponse;
@@ -40,7 +40,6 @@ public interface Api {
             @Body User body
     );
 
-    // WIP
     @Headers("Content-Type: application/json")
     @POST("api/users/{id}/history")
     Call<SendHistoryResponse> addHistory(

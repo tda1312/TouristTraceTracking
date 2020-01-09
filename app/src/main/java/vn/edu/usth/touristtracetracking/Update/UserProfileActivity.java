@@ -21,7 +21,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import vn.edu.usth.touristtracetracking.Foreground_service.MapsActivity;
 import vn.edu.usth.touristtracetracking.R;
 import vn.edu.usth.touristtracetracking.RetrofitHandler;
 import vn.edu.usth.touristtracetracking.User;
