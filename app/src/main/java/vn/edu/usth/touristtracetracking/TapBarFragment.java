@@ -15,7 +15,7 @@ import android.widget.ImageView;
 
 import com.michaldrabik.tapbarmenulib.TapBarMenu;
 
-import vn.edu.usth.touristtracetracking.ForegroundService.MapsActivity;
+import vn.edu.usth.touristtracetracking.Foreground_service.MapsActivity;
 import vn.edu.usth.touristtracetracking.History.HistoryActivity;
 import vn.edu.usth.touristtracetracking.Settings.SettingsActivity;
 import vn.edu.usth.touristtracetracking.Update.UserProfileActivity;

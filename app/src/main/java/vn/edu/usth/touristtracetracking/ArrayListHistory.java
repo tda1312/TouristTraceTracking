@@ -2,7 +2,7 @@ package vn.edu.usth.touristtracetracking;
 
 import java.util.ArrayList;
 
-import vn.edu.usth.touristtracetracking.ForegroundService.LocationData;
+import vn.edu.usth.touristtracetracking.Foreground_service.LocationData;
 
 public class ArrayListHistory {
     private ArrayList<LocationData> history;

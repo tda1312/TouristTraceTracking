@@ -32,7 +32,7 @@
         <activity android:name=".History.HistoryActivity" ></activity>
         <activity android:name=".Settings.SettingsActivity" />
         <activity android:name=".Register.RegisterActivity" ></activity>
-        <activity android:name=".ForegroundService.MapsActivity"></activity>
+        <activity android:name=".Foreground_service.MapsActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -57,7 +57,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Update.UserProfileActivity" android:windowSoftInputMode="adjustPan"/>
-        <service android:name=".ForegroundService.MyBackgroundService"
+        <service android:name=".Foreground_service.MyBackgroundService"
             android:enabled="true"
             android:exported="true"
             android:foregroundServiceType="location"/>
