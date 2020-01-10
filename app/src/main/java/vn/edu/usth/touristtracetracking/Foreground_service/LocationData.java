@@ -16,15 +16,10 @@ public class LocationData {
     @Expose
     private String arrival_time;
 
-    @SerializedName("leave_time")
-    @Expose
-    private String leave_time;
-
-    public LocationData(String latitude, String longitude, String arrival_time, String leave_time) {
+    public LocationData(String latitude, String longitude, String arrival_time) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.arrival_time = arrival_time;
-        this.leave_time = leave_time;
     }
 
     public String getLatitude() {
@@ -49,13 +44,5 @@ public class LocationData {
 
     public void setArrival_time(String arrival_time) {
         this.arrival_time = arrival_time;
-    }
-
-    public String getLeave_time() {
-        return leave_time;
-    }
-
-    public void setLeave_time(String leave_time) {
-        this.leave_time = leave_time;
     }
 }

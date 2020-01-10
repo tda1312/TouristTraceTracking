@@ -93,7 +93,7 @@ public class HistoryActivity extends FragmentActivity implements OnMapReadyCallb
                         marker = mMap.addMarker(markerOptions);
                         builder.include(markerOptions.getPosition());
                         // zoom when each marker is created
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.0f));
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 11.0f));
 
                         line.add(latLng);
                     }

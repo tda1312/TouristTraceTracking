@@ -158,19 +158,18 @@ public class MyBackgroundService extends Service {
         SimpleDateFormat datetime = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
         String arrival_time = datetime.format(mLocation.getTime());
         LocationData newLocation = new LocationData(Double.toString(mLocation.getLatitude()),
-                Double.toString(mLocation.getLongitude()), arrival_time, "");
+                Double.toString(mLocation.getLongitude()), arrival_time);
 
         // send to other activity with Event Bus
         EventBus.getDefault().postSticky(newLocation);
 
         // add new location to list
-        historyList.add(new LocationData("0.0", "0.0", "2019-12-17 00:04:50", "2019-12-17 00:05:50"));
-        historyList.add(new LocationData("1.0", "1.0", "2019-12-17 00:04:50", "2019-12-17 00:05:50"));
-
-
+        historyList.add(newLocation);
         // send the list to server
-        sendHistory(historyList);
-
+        if(historyList.size() == 3) {
+            sendHistory(historyList);
+            historyList.clear();
+        }
         // Update notification content if running in foreground service
         if(serviceRunningInForeground(this)) {
             mNotificationManager.notify(NOTIFICATION_ID, getNotification());
