@@ -1,4 +1,4 @@
-package vn.edu.usth.touristtracetracking.Foreground_service;
+package vn.edu.usth.touristtracetracking.ForegroundService;
 
 import android.app.ActivityManager;
 import android.app.Notification;
@@ -9,7 +9,6 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Binder;
 import android.os.Build;
@@ -31,7 +30,6 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -44,7 +42,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import vn.edu.usth.touristtracetracking.R;
 import vn.edu.usth.touristtracetracking.RetrofitHandler;
-import vn.edu.usth.touristtracetracking.SendHistoryResponse;
+import vn.edu.usth.touristtracetracking.History.SendHistoryResponse;
 import vn.edu.usth.touristtracetracking.User;
 import vn.edu.usth.touristtracetracking.storage.SharePrefManager;
 

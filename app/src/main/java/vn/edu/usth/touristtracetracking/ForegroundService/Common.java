@@ -1,4 +1,4 @@
-package vn.edu.usth.touristtracetracking.Foreground_service;
+package vn.edu.usth.touristtracetracking.ForegroundService;
 
 import android.content.Context;
 import android.location.Location;

@@ -1,4 +1,4 @@
-package vn.edu.usth.touristtracetracking;
+package vn.edu.usth.touristtracetracking.History;
 
 public class SendHistoryResponse {
     private boolean success;

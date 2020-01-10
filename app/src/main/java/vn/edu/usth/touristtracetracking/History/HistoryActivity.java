@@ -1,9 +1,7 @@
 package vn.edu.usth.touristtracetracking.History;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
-import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,16 +19,12 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import vn.edu.usth.touristtracetracking.Foreground_service.LocationData;
+import vn.edu.usth.touristtracetracking.ForegroundService.LocationData;
 import vn.edu.usth.touristtracetracking.R;
 import vn.edu.usth.touristtracetracking.RetrofitHandler;
 import vn.edu.usth.touristtracetracking.User;
@@ -93,7 +87,7 @@ public class HistoryActivity extends FragmentActivity implements OnMapReadyCallb
                         marker = mMap.addMarker(markerOptions);
                         builder.include(markerOptions.getPosition());
                         // zoom when each marker is created
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 11.0f));
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12.0f));
 
                         line.add(latLng);
                     }

@@ -1,4 +1,4 @@
-package vn.edu.usth.touristtracetracking.Foreground_service;
+package vn.edu.usth.touristtracetracking.ForegroundService;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

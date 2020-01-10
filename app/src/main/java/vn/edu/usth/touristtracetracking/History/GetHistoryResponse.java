@@ -2,7 +2,7 @@ package vn.edu.usth.touristtracetracking.History;
 
 import java.util.List;
 
-import vn.edu.usth.touristtracetracking.Foreground_service.LocationData;
+import vn.edu.usth.touristtracetracking.ForegroundService.LocationData;
 
 public class GetHistoryResponse {
     private boolean success;
