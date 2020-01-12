@@ -54,7 +54,6 @@ public class HistoryActivity extends FragmentActivity implements OnMapReadyCallb
 
     // request variables
     private List<LocationData> locationList;
-    final static String ISO8601DATEFORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSZ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +75,13 @@ public class HistoryActivity extends FragmentActivity implements OnMapReadyCallb
         getHistoryFromServer();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("ABCDE", "On resume here!");
+        getHistoryFromServer();
+    }
+
     private void getHistoryFromServer() {
 
         SharePrefManager sharePrefManager = SharePrefManager.getInstance(HistoryActivity.this);
@@ -88,11 +94,13 @@ public class HistoryActivity extends FragmentActivity implements OnMapReadyCallb
             public void onResponse(Call<GetHistoryResponse> call, Response<GetHistoryResponse> response) {
                 GetHistoryResponse responseBody = response.body();
 
-                if (responseBody != null && responseBody.isSuccess()) {
+                if (responseBody != null && responseBody.isSuccess() && responseBody.getData().size() != 0) {
                     locationList = responseBody.getData();
                     displayList(locationList);
+                } else if (responseBody.getData().size() == 0){
+                    Toast.makeText(HistoryActivity.this, "You don't have any history!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(HistoryActivity.this, "You don't have any history", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HistoryActivity.this, "Failed to get history!", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -105,25 +113,22 @@ public class HistoryActivity extends FragmentActivity implements OnMapReadyCallb
 
     private void displayList(List<LocationData> locationList) {
         line = new PolylineOptions();
-        for (int i = 0; i < locationList.size(); i++) {
-            LocationData location = locationList.get(i);
+        for(LocationData location : locationList){
             double latitude = Double.parseDouble(location.getLatitude());
             double longitude = Double.parseDouble(location.getLongitude());
 
-            String dtStart = location.getArrival_at();
-            boolean test = isToday(dtStart);
-            if (test) {
-                Log.i("ABCDE", location.getArrival_at() + " is " + test);
+            // display the history of today only
+            if (isToday(location.getArrival_at())) {
                 LatLng latLng = new LatLng(latitude, longitude);
 
                 MarkerOptions markerOptions = new MarkerOptions()
                         .position(latLng)
-                        .title("")
+                        .title("(" + latitude + ";" + longitude + ")")
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
                 marker = mMap.addMarker(markerOptions);
                 builder.include(markerOptions.getPosition());
                 // zoom when each marker is created
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 8.0f));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.0f));
 
                 line.add(latLng);
                 bounds = builder.build();
@@ -136,24 +141,16 @@ public class HistoryActivity extends FragmentActivity implements OnMapReadyCallb
 
     public static boolean isToday(String datestring) {
         SimpleDateFormat  format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-        int historyDate, historyMonth;
         try {
             Date date = format.parse(datestring);
             Date today = Calendar.getInstance().getTime();
-
-            historyDate = date.getDate();
-            historyMonth = date.getMonth();
-            Log.i("ABCDE", date + " has " + historyDate + " " + historyMonth);
-            Log.i("ABCDE", "Today has " + today.getDate() + " " + today.getMonth());
-
-            if (historyDate == today.getDate() && historyMonth == today.getMonth()) {
+            if (date.getDate() == today.getDate() && date.getMonth() == today.getMonth()) {
                 return true;
             }
         } catch (ParseException e) {
             e.printStackTrace();
-            Log.i("ABCDE", "Error");
+            Log.i("ABCDE", "ParseException error!");
         }
-        Log.i("ABCDE", "faileheheheh");
         return false;
     }
 }

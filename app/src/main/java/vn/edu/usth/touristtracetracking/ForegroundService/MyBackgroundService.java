@@ -186,9 +186,9 @@ public class MyBackgroundService extends Service {
             @Override
             public void onResponse(Call<SendHistoryResponse> call, Response<SendHistoryResponse> response) {
                 if(response.body() != null && response.body().isSuccess()) {
-                    Log.i("ABCDE", response.code() + "hehe");
+                    Log.i("ABCDE", response.code() + " upload successfully!");
                 } else {
-                    Log.i("ABCDE", response.body().isSuccess() + " yahoooooooo! " + response.code());
+                    Log.i("ABCDE", response.body().isSuccess() + " to upload!");
                 }
             }
 
