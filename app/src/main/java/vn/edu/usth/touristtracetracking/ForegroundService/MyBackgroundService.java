@@ -154,9 +154,9 @@ public class MyBackgroundService extends Service {
     private void onNewLocation(Location lastLocation) {
         mLocation = lastLocation;
         SimpleDateFormat datetime = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss");
-        String arrival_time = datetime.format(mLocation.getTime());
+        String arrival_at = datetime.format(mLocation.getTime());
         LocationData newLocation = new LocationData(Double.toString(mLocation.getLatitude()),
-                Double.toString(mLocation.getLongitude()), arrival_time);
+                Double.toString(mLocation.getLongitude()), arrival_at);
 
         // send to other activity with Event Bus
         EventBus.getDefault().postSticky(newLocation);

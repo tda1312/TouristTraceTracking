@@ -97,47 +97,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        // Tab Bar Menu created
-        /* tapBarMenu = findViewById(R.id.tapBarMenu);
-        tapBarMenu.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                tapBarMenu.toggle();
-            }
-        });
-
-        ImageView item1 = findViewById(R.id.item1);
-        ImageView item2 = findViewById(R.id.item2);
-        ImageView item3 = findViewById(R.id.item3);
-        ImageView item4 = findViewById(R.id.item4);
-
-        item1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onMenuItemClick(v);
-            }
-        });
-
-        item2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onMenuItemClick(v);
-            }
-        });
-
-        item3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onMenuItemClick(v);
-            }
-        });
-
-        item4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onMenuItemClick(v);
-            }
-        }); */
-        // Set onClickListeners
 
         // Checks for permissions, request if not granted
         if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -321,7 +280,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     event.getLongitude();
             latitude = event.getLatitude();
             longitude = event.getLongitude();
-            String arrival_time = event.getArrival_time();
+            String arrival_time = event.getArrival_at();
             Toast.makeText(mService, "Your current location:\n" + data + "\nat: " + arrival_time, Toast.LENGTH_SHORT).show();
         }
     }
@@ -353,33 +312,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
     }
-
-    /*public void onMenuItemClick(View view) {
-        tapBarMenu.close();
-        switch (view.getId()) {
-            case R.id.item1:
-                Log.i("TAG", "Item 1 selected");
-                Intent UserProfileIntent = new Intent(MapsActivity.this, UserProfileActivitiy.class);
-                startActivity(UserProfileIntent);
-                break;
-            case R.id.item2:
-                Log.i("TAG", "Item 2 selected");
-                Intent MapIntent = new Intent(MapsActivity.this, MapsActivity.class);
-                startActivity(MapIntent);
-                break;
-            case R.id.item3:
-                Log.i("TAG", "Item 3 selected");
-                Intent FavoriteIntent = new Intent(MapsActivity.this, HistoryActivity.class);
-                startActivity(FavoriteIntent);
-                break;
-            case R.id.item4:
-                Log.i("TAG", "Item 4 selected");
-                Intent SettingsIntent = new Intent(MapsActivity.this, SettingsActivity.class);
-                startActivity(SettingsIntent);
-                break;
-        }
-    } */
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
