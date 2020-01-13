@@ -28,7 +28,8 @@
     <string name="date_of_birth">Ngày sinh</string>
     <string name="phone">Số điện thoại</string>
     <string name="nationality">Quốc tịch</string>
-    <string name="email">Địa chỉ Email</string>
+    <string name="username">Tên người </string>
+    <string name="email">Địa chỉ  </string>
     <string name="country">Quê quán</string>
     <string name="city">Thành phố</string>
     <string name="country_edt">Quê quán</string>
