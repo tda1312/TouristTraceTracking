@@ -19,7 +19,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:foreground="?android:attr/selectableItemBackground"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/TextInputLayout_1"
@@ -73,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:shadowColor="#000000"
             android:backgroundTint="#ffffff"
             android:shadowDx="2"

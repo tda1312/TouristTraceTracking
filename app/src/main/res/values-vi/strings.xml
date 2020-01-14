@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TouristTraceTracking</string>
+    <string name="app_name">Tourist Trace Tracking</string>
     <string name="summary_language">Chọn ngôn ngữ khác</string>
     <string name="summary_ringtone">Chọn chuông thông báo</string>
     <string name="summary_vibrate">Bật rung khi có thông báo mới</string>
