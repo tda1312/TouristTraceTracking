@@ -69,7 +69,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txForgotPassword"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            android:foreground="?android:attr/selectableItemBackground"/>
 
         <Button
             android:id="@+id/bt_Signin"
@@ -86,7 +87,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ed_password"
-            app:layout_constraintVertical_bias="0.584" />
+            app:layout_constraintVertical_bias="0.584"
+            android:foreground="?android:attr/selectableItemBackground"/>
 
         <TextView
             android:id="@+id/txForgotPassword"
@@ -96,7 +98,7 @@
             android:layout_marginTop="55dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="70dp"
-            android:text=" Forgot password?"
+            android:text=""
             android:textColor="#ffffff"
             android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -121,8 +123,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="200dp"
-                android:drawableEnd="@drawable/ic_email_black_24dp"
-                android:hint="@string/email"
+                android:paddingEnd="1dp"
+                android:hint="@string/username"
                 android:theme="@style/myEditTextStyle"
                 android:inputType="textEmailAddress"
                 android:lines="1"
@@ -141,9 +143,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txbyTime"
-            app:layout_constraintVertical_bias="0.74">
+            app:layout_constraintVertical_bias="0.74"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="#FFF">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -159,7 +163,8 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ed_email"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.0"
+                />
         </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

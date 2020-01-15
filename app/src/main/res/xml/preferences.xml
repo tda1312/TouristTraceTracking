@@ -8,18 +8,19 @@
         <SwitchPreference
             android:defaultValue="true"
             android:key="@string/key_noti"
-            android:title="@string/tittle_noti_switch" />
+            android:title="@string/tittle_noti_switch"
+            android:summary="This feature is coming soon!"/>
 
         <Preference
             android:dependency="@string/key_noti"
             android:key="@string/key_ringtone"
             android:title="@string/tittle_ringtone"
-            android:summary="@string/summary_ringtone" />
+            android:summary= "This feature is coming soon!" />
 
         <SwitchPreference
             android:title="@string/tittle_vibrate"
             android:key="@string/key_vibrate"
-            android:summary="@string/summary_vibrate"/>
+            android:summary="This feature is coming soon!"/>
 
     </PreferenceCategory>
 
@@ -32,7 +33,7 @@
             android:dialogTitle="@string/tittle_select_language"
             android:entries="@array/pref_language_entries"
             android:entryValues="@array/pref_language_values"
-            android:summary="@string/summary_language" >
+            android:summary="This feature is coming soon!" >
 
         </ListPreference>
 
@@ -40,17 +41,7 @@
 
     <PreferenceCategory
         android:key="@string/key_util"
-        android:title="@string/tittle_util">
-
-        <ListPreference
-            android:key="@string/key_theme"
-            android:title="@string/tittle_theme"
-            android:dialogTitle="@string/tittle_select_theme"
-            android:entries="@array/pref_theme_entries"
-            android:entryValues="@array/pref_theme_values"
-            android:summary="@string/summary_theme" >
-
-        </ListPreference>
+        android:title="Contact us">
 
         <Preference
             android:key="@string/key_send_feedback"
@@ -73,6 +64,13 @@
                 android:action="android.intent.action.VIEW"
                 android:data="@string/url_privacy_policy" />
         </Preference>
+    </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="Logout">
+            <Preference
+                android:key="key_logout"
+                android:title="@string/logout"
+                android:summary="See you later!"/>
     </PreferenceCategory>
 </PreferenceScreen>

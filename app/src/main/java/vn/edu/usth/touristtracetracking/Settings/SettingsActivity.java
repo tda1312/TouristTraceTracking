@@ -1,7 +1,8 @@
 package vn.edu.usth.touristtracetracking.Settings;
 
-import androidx.fragment.app.Fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.content.Context;
@@ -18,9 +19,12 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.WindowManager;
 
+import vn.edu.usth.touristtracetracking.Login.LoginActivity;
 import vn.edu.usth.touristtracetracking.R;
+import vn.edu.usth.touristtracetracking.storage.SharePrefManager;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -53,11 +57,54 @@ public class SettingsActivity extends AppCompatActivity {
                     return true;
                 }
             });
+
+            // logout preference
+            Preference logoutPref = findPreference("key_logout");
+            logoutPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Log.i("ABCDE", "logout !!!");
+                    userLogout();
+                    return true;
+                }
+            });
+
         }
 
+        private void userLogout() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
+            builder.setTitle("Confirm");
+            builder.setMessage("Are you sure?");
+
+            builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int which) {
+                    // Clear Share Pref and log user out
+                    SharePrefManager.getInstance(getActivity()).clear();
+                    Log.i("ABCDE", "clear successfully!");
+
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+
+                    dialog.dismiss();
+                }
+            });
+
+            builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Do nothing
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
     }
-
 
     private static void bindPreferenceSummaryToValue(Preference preference) {
         preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);

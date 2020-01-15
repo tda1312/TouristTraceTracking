@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TouristTraceTracking</string>
+    <string name="app_name">Tourist Trace Tracking</string>
     <string name="summary_language">Chọn ngôn ngữ khác</string>
     <string name="summary_ringtone">Chọn chuông thông báo</string>
     <string name="summary_vibrate">Bật rung khi có thông báo mới</string>
@@ -28,7 +28,8 @@
     <string name="date_of_birth">Ngày sinh</string>
     <string name="phone">Số điện thoại</string>
     <string name="nationality">Quốc tịch</string>
-    <string name="email">Địa chỉ Email</string>
+    <string name="username">Tên người </string>
+    <string name="email">Địa chỉ  </string>
     <string name="country">Quê quán</string>
     <string name="city">Thành phố</string>
     <string name="country_edt">Quê quán</string>
@@ -40,5 +41,7 @@
     <string name="nationality_edt">Quốc tịch</string>
     <string name="city_edt">Thành phố</string>
     <string name="password">Mật Khẩu</string>
+    <string name="logout">Đăng xuất</string>
+
 
 </resources>
