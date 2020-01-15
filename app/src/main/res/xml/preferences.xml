@@ -69,7 +69,7 @@
     <PreferenceCategory
         android:title="Logout">
             <Preference
-                android:key="@string/logout"
+                android:key="key_logout"
                 android:title="@string/logout"
                 android:summary="See you later!"/>
     </PreferenceCategory>
