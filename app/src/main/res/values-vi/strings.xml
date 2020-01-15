@@ -41,5 +41,7 @@
     <string name="nationality_edt">Quốc tịch</string>
     <string name="city_edt">Thành phố</string>
     <string name="password">Mật Khẩu</string>
+    <string name="logout">Đăng xuất</string>
+
 
 </resources>
