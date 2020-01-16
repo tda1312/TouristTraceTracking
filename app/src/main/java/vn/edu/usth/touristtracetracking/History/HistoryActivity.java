@@ -98,7 +98,7 @@ public class HistoryActivity extends FragmentActivity implements OnMapReadyCallb
                     locationList = responseBody.getData();
                     displayList(locationList);
                 } else if (responseBody.getData().size() == 0){
-                    Toast.makeText(HistoryActivity.this, "You don't have any history!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HistoryActivity.this, "You don't have any history! Please come back later!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(HistoryActivity.this, "Failed to get history!", Toast.LENGTH_SHORT).show();
                 }
@@ -128,7 +128,7 @@ public class HistoryActivity extends FragmentActivity implements OnMapReadyCallb
                 marker = mMap.addMarker(markerOptions);
                 builder.include(markerOptions.getPosition());
                 // zoom when each marker is created
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10.0f));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.0f));
 
                 line.add(latLng);
                 bounds = builder.build();
