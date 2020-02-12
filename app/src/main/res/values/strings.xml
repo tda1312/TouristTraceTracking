@@ -1,7 +1,67 @@
 <resources>
-    <string name="app_name">TouristTraceTracking</string>
+    <string name="app_name">Tourist Trace Tracker</string>
     <string name="title_activity_maps">Map</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="url_about" translatable="false">https://www.facebook.com/thivu.truongsi</string>
+    <string name="url_privacy_policy" translatable="false">https://www.facebook.com/thivu.truongsi</string>
+    <string name="key_send_feedback" translatable="false">key_send_feedback</string>
+    <string name="tittle_send_feedback">Send Feedback</string>
+    <string name="key_language" translatable="false">key_language</string>
+    <string name="tittle_language">Language</string>
+    <string name="tittle_select_language">Select language</string>
+    <string name="summary_language">Choose an alternative language</string>
+    <string name="choose_email_client" translatable="false">Choose email client</string>
+    <string name="tittle_noti">Notifications</string>
+    <string name="key_noti" translatable="false">key_noti</string>
+    <string name="tittle_noti_switch">Enable notifications</string>
+    <string name="summary_ringtone">Choose notification sound</string>
+    <string name="key_ringtone" translatable="false">key_ringtone</string>
+    <string name="tittle_ringtone">Ringtone</string>
+    <string name="key_ringtone_silent" translatable="false">key_silent</string>
+    <string name="tittle_ringtone_silent">Silent</string>
+    <string name="key_vibrate" translatable="false">key_vibrate</string>
+    <string name="tittle_vibrate">Vibrate</string>
+    <string name="summary_vibrate">Enable vibration on new notifications</string>
+    <string name="key_util" translatable="false">key_util</string>
+    <string name="tittle_util">Utilities</string>
+    <string name="key_theme" translatable="false">key_theme</string>
+    <string name="tittle_theme">Dark theme</string>
+    <string name="summary_theme">Try out some cool themes</string>
+    <string name="key_about" translatable="false">key_about</string>
+    <string name="tittle_about">About us</string>
+    <string name="summary_feedback">Got any queries? Send us!</string>
+    <string name="summary_about">Developer team information</string>
+    <string name="key_privacy" translatable="false">key_privacy</string>
+    <string name="tittle_privacy">Privacy policy</string>
+    <string name="language_code_vietnamese" translatable="false">vi</string>
+    <string name="language_vietnamese" translatable="false">Tiếng Việt</string>
+    <string name="language_code_english" translatable="false">en</string>
+    <string name="language_english" translatable="false">English</string>
+    <string name="tittle_select_theme">Select theme</string>
+    <string name="text_change_theme_light">Light</string>
+    <string name="text_change_theme_dark">Dark</string>
+    <string name="fist_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="phone">Phone</string>
+    <string name="nationality">Nationality</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="country">Country</string>
+    <string name="city">City</string>
+    <string name="country_edt">Your Country</string>
+    <string name="fist_name_edt">Your First Name</string>
+    <string name="last_name_edt">Your Last Name</string>
+    <string name="date_of_birth_edt">yyyy/mm/dd</string>
+    <string name="phone_edt">Your Phone Number</string>
+    <string name="email_edt">Your Email Address</string>
+    <string name="nationality_edt">Your Nationality</string>
+    <string name="city_edt">Your City</string>
+    <string name="password">Your Password</string>
+    <string name="logout">Log out</string>
+    <string name="key_logout" translatable="false">key_logout</string>
+
+
 </resources>

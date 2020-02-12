@@ -1,3 +1,12 @@
+# Production Release:
+#### Apk file v1.0.1: [1st-link](https://drive.google.com/open?id=13pFtKapLZE6D4WAlVXqlAUbzJWVdNZdA) or [2nd-link](https://drive.google.com/open?id=1qY3VKOJLyEQb0w_H-BdPQFjI-VYxDRkN)
+
+#### Webversion: (update later)
+
+# Tourist Trace Tracking sub-repos:
+#### Backend API: https://github.com/phuongminh2303/TouristTraceAPI
+#### Web repo: https://github.com/praise2112/TouristTraceTrackingWeb
+
 # Tourist Trace Tracking git guide:
 
 ## What you need to do ONE TIME:

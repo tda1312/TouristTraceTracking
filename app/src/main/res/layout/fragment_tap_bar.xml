@@ -10,12 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="24dp"
-        app:tbm_backgroundColor="@color/darkBlue"
-        app:tbm_menuAnchor="bottom"
-        app:tbm_buttonPosition="center"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        >
+        app:tbm_backgroundColor="@color/gradStart"
+        app:tbm_buttonPosition="center"
+        app:tbm_menuAnchor="bottom">
 
         <ImageView
             android:id="@+id/item1"
@@ -25,8 +24,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:src="@drawable/ic_person_white_24dp"
-            tools:visibility="visible"
-            />
+            tools:visibility="visible" />
 
         <ImageView
             android:id="@+id/item2"
@@ -35,14 +33,12 @@
             android:layout_weight="1"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:src="@drawable/ic_room_white_24dp"
-            />
+            android:src="@drawable/ic_room_white_24dp" />
 
         <Space
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
+            android:layout_weight="1" />
 
         <ImageView
             android:id="@+id/item3"
@@ -51,8 +47,7 @@
             android:layout_weight="1"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:src="@drawable/ic_favorite_white_24dp"
-            />
+            android:src="@drawable/ic_favorite_white_24dp" />
 
         <ImageView
             android:id="@+id/item4"
@@ -61,8 +56,7 @@
             android:layout_weight="1"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:src="@drawable/ic_settings_white_24dp"
-            />
+            android:src="@drawable/ic_settings_white_24dp" />
 
     </com.michaldrabik.tapbarmenulib.TapBarMenu>
 </FrameLayout>
